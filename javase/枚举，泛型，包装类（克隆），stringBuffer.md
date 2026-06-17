@@ -165,6 +165,7 @@ Box<Integer> intBox = new Box<>();
 public <T> void print(T t) {
     System.out.println(t);
 }
+print(12)//就确定为整形
 ```
 
 ---
