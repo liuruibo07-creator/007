@@ -39,6 +39,29 @@ public enum Season {
 | 可以定义成员 | 因为本质是 Java 类，所以普通类中能定义的，枚举都可以定义 |
 | 内置方法 | `values()` 获取所有枚举对象数组；`valueOf()` 获取单个枚举对象 |
 ```
+public enum A {  
+    X("aa"),  
+    Y("BB"),  
+    Z("CC");  
+    //构造方法  
+    private A(){  
+  
+    }  
+    //有参构造  
+    private A(String name){  
+        this.name=name;  
+    }  
+    private String name;  
+    public String getName() {  
+        return name;  
+    }  
+    public void setName(String name) {  
+        this.name = name;  
+    }  
+    public void show(){  
+        System.out.println("name:"+name);  
+    }  
+}
 
 public class Test {  
     public static void main(String[] args) {  
