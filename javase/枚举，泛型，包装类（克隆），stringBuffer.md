@@ -254,7 +254,7 @@ public void process(List<? extends Number> list) { }
 // 接受 Integer 及其父类（Number, Object）
 public void add(List<? super Integer> list) { }
 //? : 通配符，在使用泛型的时候可以代表任意类型
-public void add(List<> list) { }
+public void add(List<?> list) {}
 ```
 
 ---
@@ -293,7 +293,7 @@ public String toString() {
 |------|------|
 | 默认行为 | 比较两个对象的**地址值**是否相等（即 `==`） |
 | 建议操作 | **重写**该方法，改为比较对象的**属性值** |
-
+>String.equals()能比较内容是因为它也重写了
 ```java
 @Override
 public boolean equals(Object o) {
