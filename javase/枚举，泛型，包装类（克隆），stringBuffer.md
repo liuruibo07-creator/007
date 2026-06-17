@@ -337,6 +337,20 @@ public class Person implements Cloneable {
         copy.address = new Address(this.address); // 引用类型需要新建对象
         return copy;
     }
+    //看这个
+    @Override  
+    protected Object clone() throws CloneNotSupportedException {  
+    //return super.clone();  
+    //手动拷贝数组  
+    User u=(User)super.clone();  
+    double [] scores1=u.getScores();  
+    double[] newscores=new double[scores.length];  
+    for (int i = 0; i < scores1.length; i++) {  
+        newscores[i]=scores[i];  
+    }  
+    u.setScores(newscores);  
+    return u;  
+}
 }
 ```
 
