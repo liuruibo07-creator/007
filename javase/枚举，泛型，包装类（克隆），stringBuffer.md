@@ -188,14 +188,28 @@ print(12)//就确定为整形
 **应用场景：** 当接口中数据类型不确定时。
 
 ```java
-// 泛型接口
-public interface Comparable<T> {
-    int compareTo(T o);
+// 泛型接口  在定义实现类的时候确定
+public class MyListImp implements MyList<String>{    
+    @Override  
+    public boolean add(String s) {  
+        return false;  
+    }  
+    @Override  
+    public String get(int index) {  
+        return null;  
+    }  
 }
 
 // 实现类指定类型
-public class Student implements Comparable<Student> {
-    public int compareTo(Student o) { ... }
+public class MyListImp2<E> implements MyList<E>{  
+    @Override  
+    public boolean add(E e) {  
+        return false;  
+    }  
+    @Override  
+    public E get(int index) {  
+        return null;  
+    }  
 }
 
 // 实现类继续延续泛型
