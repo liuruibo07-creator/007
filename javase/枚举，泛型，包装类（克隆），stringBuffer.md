@@ -227,6 +227,16 @@ List<Object> list = new ArrayList<String>(); // ❌ 编译错误
 
 // 正确：数据类型可以继承
 String str = "hello"; // String 继承自 Object ✅
+ //泛型不具备继承性,但数据支持继承性  
+ ArrayList<Ye> list1 = new ArrayList<>();  
+ ArrayList<Fu> list2 = new ArrayList<>();  
+ ArrayList<Zi> list3 = new ArrayList<>();  
+ //泛型不具备支持性  
+ method(list1);  
+/* method(list2);  
+ method(list3);*/ //数据支持  
+ method(new ArrayList<Ye>());  
+ list1.add(new Fu());
 ```
 
 #### 通配符 `?`
@@ -243,6 +253,8 @@ public void process(List<? extends Number> list) { }
 
 // 接受 Integer 及其父类（Number, Object）
 public void add(List<? super Integer> list) { }
+//? : 通配符，在使用泛型的时候可以代表任意类型
+public void add(List<> list) { }
 ```
 
 ---
