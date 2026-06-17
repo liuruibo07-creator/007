@@ -38,7 +38,21 @@ public enum Season {
 | 枚举项是对象 | 每一个枚举项都是该类的一个对象，并且是 `public static final` 修饰的 |
 | 可以定义成员 | 因为本质是 Java 类，所以普通类中能定义的，枚举都可以定义 |
 | 内置方法 | `values()` 获取所有枚举对象数组；`valueOf()` 获取单个枚举对象 |
+```
 
+public class Test {  
+    public static void main(String[] args) {  
+        // 定义枚举类并认识枚举类的特点  
+        //  
+        A[] a=A.values();  
+        for(int i=0;i<a.length;i++){  
+            System.out.println(a[i]);  
+        }  
+        A x=A.valueOf("Y");  
+        System.out.println(x);  
+    }  
+}
+```
 ---
 
 ### 1.3 枚举的应用场景
