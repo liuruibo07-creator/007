@@ -135,7 +135,11 @@ public class Box<T> {
 
     public T getValue() { return value; }
     public void setValue(T value) { this.value = value; }
-    
+    public boolean add(T e){  
+    arr[size]=e;  
+    size=size+1;  
+    return true;  
+}
 }
 
 // 使用
