@@ -58,14 +58,12 @@
 `BigDecimal` 用来解决小数计算中的精度问题。
 
 ### 2. 如何创建对象
-
 常见创建方式：
 
 ```java
 new BigDecimal("0.1");
 BigDecimal.valueOf(0.1);
 ```
-
 重点结论：
 
 > 创建 `BigDecimal` 时，推荐使用字符串格式的构造方法。
@@ -75,8 +73,8 @@ BigDecimal.valueOf(0.1);
 ```java
 new BigDecimal("0.1");
 ```
-
 ### 3. 常用方法与舍入模式
+![](assets/day28_summary/file-20260618232509392.png)
 
 `BigDecimal` 涉及计算时经常需要指定舍入模式，常见模式包括：
 
