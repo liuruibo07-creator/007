@@ -84,7 +84,28 @@ new BigDecimal("0.1");
 | `RoundingMode.FLOOR` | 去尾：无论是否大于 5 都丢弃 |
 | `RoundingMode.HALF_UP` | 四舍五入 |
 ```
-
+public class Test2 {  
+    public static void main(String[] args) {  
+        BigDecimal a=new BigDecimal("0.3");  
+        BigDecimal b=new BigDecimal("0.4");  
+        System.out.println(a.add(b));  
+        BigDecimal c=a.subtract(b);  
+        System.out.println(c);  
+        BigDecimal res=a.multiply(b);  
+        System.out.println(res);  
+        BigDecimal e=new BigDecimal("10");  
+        BigDecimal f=new BigDecimal("3");  
+        //进一法  RoundingMode.UP不管是大于等于5还是小于5都进一位  
+        BigDecimal res2=e.divide(f,2,RoundingMode.UP);  
+        System.out.println(res2);  
+        // 去尾法  RoundingMode.FLOOR       直接将后面的小数截取不要了  
+        BigDecimal res3=e.divide(f,6, RoundingMode.FLOOR);  
+        System.out.println(res3);  
+        // 四舍五入 RoundingMode.HALF_UP    四舍五入 判断小数点后第三位数字是否大于等于5 如果是则进一 如果不是则不进一  
+        BigDecimal res4=e.divide(f,6, RoundingMode.HALF_UP);  
+        System.out.println(res4);  
+    }  
+}
 ```
 ### 4. 重要特点
 
@@ -92,7 +113,6 @@ new BigDecimal("0.1");
 每次计算或修改后，通常会返回一个新的对象。
 
 ---
-
 ## 五、时间基础概念
 
 ### 1. 世界标准时间
