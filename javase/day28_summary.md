@@ -83,7 +83,9 @@ new BigDecimal("0.1");
 | `RoundingMode.UP` | 进一：无论是否大于 5 都进一位 |
 | `RoundingMode.FLOOR` | 去尾：无论是否大于 5 都丢弃 |
 | `RoundingMode.HALF_UP` | 四舍五入 |
+```
 
+```
 ### 4. 重要特点
 
 `BigDecimal` 和 `String` 一样，是不可变类。  
