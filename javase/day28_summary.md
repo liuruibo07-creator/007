@@ -150,7 +150,7 @@ new Date();
 
 ```java
 new Date(long 毫秒值);
-new Date(0L);
+new Date(0L);//原点时间
 ```
 
 表示指定毫秒值对应的时间。
