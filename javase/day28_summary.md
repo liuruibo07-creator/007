@@ -194,7 +194,23 @@ new SimpleDateFormat(String pattern);
 | --- | --- |
 | `String format(Date date)` | 格式化，将 `Date` 转为 `String` |
 | `Date parse(String text)` | 解析，将 `String` 转为 `Date` |
-
+### 4.示例代码
+```
+public class SimpleDateFormatDemo {  
+    public static void main(String[] args) throws ParseException {  
+        //创建SimpleDateFormat对象  
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+        //作用1:将Date对象格式化为String  
+        Date d1=new Date();  
+        String str=sdf.format(d1);  
+        System.out.println(str);  
+        //作用2:将时间格式的字符串Date对象  
+        String str2="2020-01-01 00:00:00";  
+        Date d2=sdf.parse(str2);  
+        System.out.println(d2);  
+    }  
+}
+```
 ## 6.3 Calendar
 
 思维导图中列出了 `Calendar` 的三个学习方向：
