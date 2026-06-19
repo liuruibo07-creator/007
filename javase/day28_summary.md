@@ -320,7 +320,17 @@ LocalDateTime ldDateTime = LocalDateTime.of(2023, 1, 1, 8, 20, 30);
 | 加减计算 | `minusXXX`、`plusXXX` |
 | 解析 | `parse` |
 ```java
-
+//查询
+System.out.println(nowDateTime.getYear());//年  
+System.out.println(nowDateTime.getMonthValue());//月  
+System.out.println(nowDateTime.getDayOfMonth());//日  
+System.out.println(nowDateTime.getHour());//时  
+System.out.println(nowDateTime.getMinute());//分  
+System.out.println(nowDateTime.getSecond());//秒  
+System.out.println(nowDateTime.getNano());//纳秒  
+// 日:当年的第几天  
+System.out.println("dayofYear:" + nowDateTime.getDayOfYear());
+//修改
 ```
 ## 7.2 DateTimeFormatter
 
