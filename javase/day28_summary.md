@@ -421,7 +421,18 @@ System.out.println(time);
 - `systemDefault()`
 - `of("Asia/Shanghai")`
 - `getAvailableZoneIds()`
-
+```java
+//获取java支持的所有时区  
+Set<String> zoneIds = ZoneId.getAvailableZoneIds();  
+System.out.println(zoneIds);   
+System.out.println(zoneIds.size());//获取set集合的长度  
+//获取系统当前默认时区  
+ZoneId zoneId = ZoneId.systemDefault();  
+System.out.println(zoneId);  
+//根据时区字符串来获取ZoneId  
+ZoneId zoneId2 = ZoneId.of("Asia/Shanghai");  
+System.out.println(zoneId2);
+```
 ### ZonedDateTime
 
 `ZonedDateTime` 表示带时区的时间。
