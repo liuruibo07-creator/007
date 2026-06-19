@@ -195,7 +195,7 @@ new SimpleDateFormat(String pattern);
 | `String format(Date date)` | 格式化，将 `Date` 转为 `String` |
 | `Date parse(String text)` | 解析，将 `String` 转为 `Date` |
 ### 4.示例代码
-```
+```java
 public class SimpleDateFormatDemo {  
     public static void main(String[] args) throws ParseException {  
         //创建SimpleDateFormat对象  
@@ -241,7 +241,14 @@ public class SimpleDateFormatDemo {
 | --- | --- |
 | `now()` | 创建当前时间对象 |
 | `of(xxx)` | 创建指定时间对象 |
-
+```java
+//1.获取当前时间的日历对象(包含 年月日)  
+LocalDate nowDate = LocalDate.now();  
+//System.out.println("今天的日期:" + nowDate);  
+//2.获取指定的时间的日历对象  
+LocalDate ldDate = LocalDate.of(2023, 1, 1);  
+System.out.println("指定日期:" + ldDate);
+```
 ### 3. 常用方法
 
 | 类型 | 方法 |
