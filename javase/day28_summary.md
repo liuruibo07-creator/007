@@ -344,14 +344,18 @@ LocalDate plusLocalDate = ldDate.plusDays(1);
 System.out.println(plusLocalDate);
 ```
 ## 7.2 DateTimeFormatter
-
-### 1. 创建对象
+### 1.概念
+```java
+DateTimeFormatter表示时间格式化类  
+    static DateTimeFormatter ofPattern(String pattern) 获取指定格式的格式化对象  
+    String format(TemporalAccessor temporal)      格式化
+```
+### 2. 创建对象
 
 ```java
 DateTimeFormatter.ofPattern(String pattern);
 ```
-
-### 2. 格式化
+### 3. 格式化
 
 ```java
 format
