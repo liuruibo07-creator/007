@@ -362,8 +362,17 @@ DateTimeFormatter.ofPattern(String pattern);
 format
 ```
 ### 4.示例代码
-```
-
+```java
+public static void main(String[] args) {  
+    //创建一个时间格式化对象  
+    DateTimeFormatter dtf=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+    //对时间对象进行格式化  
+    String str=dtf.format(ZonedDateTime.now());  
+    System.out.println(str);  
+    //  将时间格式化的字符串解析为时间对象  
+    TemporalAccessor ta=dtf.parse(str);  
+    System.out.println(ta);  
+}
 ```
 ## 7.3 Instant / ZoneId / ZonedDateTime
 
