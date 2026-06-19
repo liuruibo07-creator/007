@@ -219,7 +219,15 @@ public class SimpleDateFormatDemo {
 - 如何创建对象
 - 常用方法
 
-但具体内容未展开。
+```
+1.Calendar日历类是一个抽象类,无法实例化。  
+2.如何获取Calendar对象? public static Calendar getInstance() : 获取当前时间的日历对象  
+3.常用方法:  
+    获取: get(int field)  
+    设置: set(int field,int value)  
+    计算: add(int field,int amount)  
+    转换: Date和Calendar之间转换 Date getTime()  setTime(Date date)
+```
 
 ---
 
