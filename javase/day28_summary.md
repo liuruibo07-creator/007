@@ -230,7 +230,48 @@ public class SimpleDateFormatDemo {
 ```
 
 ---
-
+```java
+ public static void main(String[] args) {  
+        Calendar c= Calendar.getInstance();  
+        System.out.println(c);  
+        //2.1查  
+        int year=c.get(Calendar.YEAR);  
+        int month=c.get(Calendar.MONTH)+1;  
+        int day=c.get(Calendar.DAY_OF_MONTH);  
+        int hour=c.get(Calendar.HOUR_OF_DAY);  
+        int minute=c.get(Calendar.MINUTE);  
+        int second=c.get(Calendar.SECOND);  
+        System.out.println(year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second);  
+        //2.2改  
+        c.set(Calendar.YEAR,2020);  
+        c.set(Calendar.MONTH,11);  
+        c.set(Calendar.DAY_OF_MONTH,1);  
+        System.out.println(c.get(Calendar.MONTH));  
+        c.set(Calendar.HOUR_OF_DAY,0);  
+        c.set(Calendar.MINUTE,0);  
+        c.set(Calendar.SECOND,0);  
+        System.out.println(c);  
+        //2.3增  
+        c.add(Calendar.YEAR,1);  
+        System.out.println(c);  
+        c.add(Calendar.MONTH,1);  
+        System.out.println(c);  
+        c.add(Calendar.DAY_OF_MONTH,1);  
+        System.out.println(c);  
+        c.add(Calendar.HOUR_OF_DAY,1);  
+        System.out.println(c);  
+        c.add(Calendar.MINUTE,1);  
+        System.out.println(c);  
+        c.add(Calendar.SECOND,1);  
+        System.out.println(c);  
+        //2.4转换  
+        Date d=c.getTime();  
+        System.out.println(d);  
+        c.setTime(d);  
+        System.out.println(c);  
+    }  
+}
+```
 ## 七、新日期时间 API
 
 ## 7.1 LocalDate / LocalTime / LocalDateTime
