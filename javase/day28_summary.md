@@ -385,7 +385,15 @@ public static void main(String[] args) {
 - `now()`
 - `ofEpochMilli()`
 - `ofEpochSecond()`
-
+```
+Instant表示不带时区的时间  
+  static Instant now() 获取当前时间的Instant对象(标准时间)  
+  static Instant ofXxxx(long epochMilli) 根据(秒/毫秒/纳秒)获取Instant对象  
+  ZonedDateTime atZone(ZoneIdzone) 指定时区  
+  boolean isxxx(Instant otherInstant) 判断系列的方法  
+  Instant minusXxx(long millisToSubtract) 减少时间系列的方法  
+  Instant plusXxx(long millisToSubtract) 增加时间系列的方法
+```
 ### ZoneId
 
 `ZoneId` 表示时区。
