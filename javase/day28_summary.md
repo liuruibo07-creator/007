@@ -248,6 +248,16 @@ LocalDate nowDate = LocalDate.now();
 //2.获取指定的时间的日历对象  
 LocalDate ldDate = LocalDate.of(2023, 1, 1);  
 System.out.println("指定日期:" + ldDate);
+
+// 获取本地时间的日历对象(包含 时分秒)  
+LocalTime nowTime = LocalTime.now();
+//指定时间  
+System.out.println(LocalTime.of(8, 20));//时分  
+System.out.println(LocalTime.of(8, 20, 30));//时分秒  
+System.out.println(LocalTime.of(8, 20, 30, 150));//时分秒纳秒
+
+
+
 ```
 ### 3. 常用方法
 
