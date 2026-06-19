@@ -349,6 +349,7 @@ System.out.println(plusLocalDate);
 DateTimeFormatter表示时间格式化类  
     static DateTimeFormatter ofPattern(String pattern) 获取指定格式的格式化对象  
     String format(TemporalAccessor temporal)      格式化
+    参数 —— `TemporalAccessor` 是 JDK 8 时间体系的**顶层接口**，`LocalDateTime`、`ZonedDateTime`、`LocalDate` 等都实现了它，所以这个方法能接受任何 JDK 8 时间类型
 ```
 ### 2. 创建对象
 
