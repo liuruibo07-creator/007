@@ -330,7 +330,18 @@ System.out.println(nowDateTime.getSecond());//秒
 System.out.println(nowDateTime.getNano());//纳秒  
 // 日:当年的第几天  
 System.out.println("dayofYear:" + nowDateTime.getDayOfYear());
-//修改
+//is开头的方法表示判断  时间上的前后: 前人栽树后人乘凉  
+System.out.println(ldDate.isBefore(ldDate));  
+System.out.println(ldDate.isAfter(ldDate));  
+//with开头的方法表示修改，只能修改年月日  
+LocalDate withLocalDate = ldDate.withYear(2000);  
+System.out.println(withLocalDate);  
+//minus开头的方法表示减少，只能减少年月日  
+LocalDate minusLocalDate = ldDate.minusYears(1);  
+System.out.println(minusLocalDate);  
+//plus开头的方法表示增加，只能增加年月日  
+LocalDate plusLocalDate = ldDate.plusDays(1);  
+System.out.println(plusLocalDate);
 ```
 ## 7.2 DateTimeFormatter
 
