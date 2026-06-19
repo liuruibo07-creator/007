@@ -257,6 +257,8 @@ System.out.println(LocalTime.of(8, 20, 30));//时分秒
 System.out.println(LocalTime.of(8, 20, 30, 150));//时分秒纳秒
 
 
+// 当前时间的的日历对象(包含年月日时分秒)  
+LocalDateTime nowDateTime = LocalDateTime.now();
 
 ```
 ### 3. 常用方法
