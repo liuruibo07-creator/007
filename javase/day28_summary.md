@@ -568,7 +568,44 @@ Arrays.sort(基本类型[] arr);
 | --- | --- |
 | 自然排序接口 `Comparable` | `Arrays.sort(引用类型[] arr)` |
 | 比较器排序接口 `Comparator` | `Arrays.sort(T[] a, Comparator<? super T> c)` |
-
+```
+  @Override  
+    public int compareTo(Student o) {  
+        //return this.getAge() - o.getAge(); //按照年龄升序  
+        //return o.getAge() - this.getAge(); //按照年龄升序  
+        //使用自然排序先按照学生年龄升序排列,如果年龄一样再按照身高降序排序  
+        int rs1 = this.getAge() - o.getAge();  
+        return rs1 == 0 ? o.getHeight() - this.getHeight() : rs1;  
+    }  
+}
+```
+```java
+public class Test2 {  
+    public static void main(String[] args) {  
+        Student[] students = new Student[4];  
+        students[0] = new Student("张三", 169, 23);  
+        students[1] = new Student("李四", 163, 26);  
+        students[2] = new Student("王五", 164, 26);  
+        students[3] = new Student("赵六", 167, 24);  
+        Arrays.sort(students);  
+        //需求1: 使用自然排序按照学生年龄升序排列  
+        //需求2: 使用自然排序按照学生年龄降序排列  
+        //需求5: 使用自然排序先按照学生年龄升序排列,如果年龄一样再按照身高降序排序  
+        //需求3: 使用比较器排序按照学生年龄升序排列  
+        //Arrays.sort(students, new Comparator<Student>() {  
+        //    @Override        //    public int compare(Student o1, Student o2) {        //        return o1.getAge() - o2.getAge();        //    }        //});        //需求4: 使用比较器排序按照学生年龄降序排列  
+        Arrays.sort(students, new Comparator<Student>() {  
+            @Override  
+           public int compare(Student o1, Student o2) {  
+                return o2.getAge() - o1.getAge();  
+           }  
+        });  
+        //需求6: 使用比较器排序 先按照学生年龄升序排列,如果年龄一样再按照身高降序排序  
+        //Arrays.sort(students, new Comparator<Student>() {  
+        //    @Override        //    public int compare(Student o1, Student o2) {        //        int rs = o1.getAge() - o2.getAge();        //        return rs != 0 ? rs : o2.getHeight() - o1.getHeight();        //    }        //});        System.out.println(Arrays.toString(students));  
+    }  
+}
+```
 ### 排序规则
 
 | 方法返回值 | 含义 |
