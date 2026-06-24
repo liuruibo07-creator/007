@@ -364,7 +364,23 @@ public static void createCar(CarFactory factory, String brand, double price) {
                → 轮次3: 排序完成
 ```
 ```java
-
+public static void main(String[] args) {  
+    int[] arr = {3, 5, 2, 1, 4};  
+    //先定义外层循环，轮数  
+    //-i 下一轮比较比上一轮少一次  
+    for(int i=0;i<arr.length-1;i++){  
+        for (int j = 0; j < arr.length-1-i; j++){  
+            //实现冒泡排序  
+            if(arr[j]>arr[j+1]){  
+                int temp = arr[j];  
+                arr[j] = arr[j+1];  
+                arr[j+1] = temp;  
+            }  
+        }  
+    }  
+    System.out.println(Arrays.toString(arr));  
+  
+}
 ```
 ---
 
@@ -375,7 +391,9 @@ public static void createCar(CarFactory factory, String brand, double price) {
 1. 从索引 `0` 开始，与后续所有元素比较，**最小值放到左边**。
 2. 第一轮结束后，最小值确定在索引 `0`；第二轮从索引 `1` 开始，依此类推。
 3. `n` 个数据只需比较 **`n-1` 轮**。
+```java
 
+```
 ---
 
 ## 六、查找算法
