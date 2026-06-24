@@ -392,7 +392,18 @@ public static void main(String[] args) {
 2. 第一轮结束后，最小值确定在索引 `0`；第二轮从索引 `1` 开始，依此类推。
 3. `n` 个数据只需比较 **`n-1` 轮**。
 ```java
-
+public static void main(String[] args) {  
+    int[] arr = {3, 5, 2, 1, 4};  
+    for (int i = 0; i < arr.length - 1; i++) {  
+        for (int j = i + 1; j < arr.length; j++) {  
+            if (arr[i] > arr[j]) {  
+                int temp = arr[i];  
+                arr[i] = arr[j];  
+                arr[j] = temp;  
+            }  
+        }  
+    }  
+    System.out.println(Arrays.toString(arr));  
 ```
 ---
 
