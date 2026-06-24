@@ -346,6 +346,13 @@ public static void createCar(CarFactory factory, String brand, double price) {
 }
 ```
 
+
+```java
+useInterB(n->{  
+    System.out.println(n);  
+});
+useInterB(System.out::println);
+```
 ---
 
 ## 五、排序算法
