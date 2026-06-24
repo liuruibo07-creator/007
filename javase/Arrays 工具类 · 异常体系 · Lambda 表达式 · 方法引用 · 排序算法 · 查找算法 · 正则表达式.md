@@ -257,7 +257,7 @@ students[3] = new Student("赵六", 167, 24);
         result = result == 0 ? o1.getHeight() - o2.getHeight() : result;       
         return result;    
 }})
-Arrays.sort(students,CompareByData::compareAsc);
+Arrays.sort(students,CompareByData::compareAsc);//类名::静态方法名
 
 ```
 
