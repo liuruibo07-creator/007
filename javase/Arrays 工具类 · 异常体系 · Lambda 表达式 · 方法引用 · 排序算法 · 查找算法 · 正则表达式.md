@@ -413,7 +413,22 @@ public static void main(String[] args) {
 
 - **适用场景：** 元素**无序**时，只能使用顺序查找。
 - **核心思想：** 从前向后依次遍历查找。
-
+```java
+public static void main(String[] args) {  
+    int[] arr = {7, 23, 81, 103, 131, 147, 79, 127};  
+    int number = 81;  
+}  
+  
+//需求: 定义方法,完成数组元素查找,返回元素的索引位置,不考虑有重复元素.  
+public static int sequentialSearch(int[] arr, int number) {  
+    for (int i = 0; i < arr.length; i++) {  
+        if (arr[i] == number) {  
+            return i;  
+        }  
+    }  
+    return -1;  
+}
+```
 ### 6.2 二分查找（Binary Search）
 
 - **适用场景：** 元素**有序**时才能使用。
