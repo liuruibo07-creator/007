@@ -330,6 +330,20 @@ System.out.println(Arrays.toString(names));
 // 前提
 // - 构造方法的形参类型 与 抽象方法形参类型 一致
 // - 抽象方法的返回值类型 与 构造方法所属类名 一致
+
+ //使用Lambda表达式实现  
+    createCar((String name, double price)->{  
+        return new Car(name,price);  
+            },"小米su7",2900000);  
+    //使用构造方法引用实现  
+    createCar(Car::new,"小米su7",2900000);  
+  
+  
+//定义方法用来生产汽车  
+public static void createCar(CarFactory factory, String brand, double price) {  
+    Car car = factory.create(brand, price);  
+    System.out.println(car);  
+}
 ```
 
 ---
