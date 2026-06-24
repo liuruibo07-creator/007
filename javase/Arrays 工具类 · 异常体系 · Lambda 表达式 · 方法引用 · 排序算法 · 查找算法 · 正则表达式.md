@@ -167,6 +167,20 @@ JDK 8 新特性，用于**简化匿名内部类**的书写。
 (被重写方法的形参列表) -> {
     被重写方法的方法体
 }
+
+
+//1.调用通用方法,通过匿名内部类实现  
+    useInterA(new InterA() {  
+        @Override  
+        public void method1() {  
+            System.out.println("匿名内部类实现");  
+        }  
+    });  
+    //2.调用通用方法,通过lambda表达式实现  
+    useInterA(()->{  
+        System.out.println("lambda表达式实现");  
+    });  
+
 ```
 
 ### 3.3 使用前提：函数式接口
