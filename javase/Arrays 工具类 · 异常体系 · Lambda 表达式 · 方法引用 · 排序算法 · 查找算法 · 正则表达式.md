@@ -316,7 +316,9 @@ System.out.println(Arrays.toString(students));
 Arrays.sort(names,(String o1, String o2)->{  
     return o1.compareToIgnoreCase(o2);  
 });
-
+// 类名::实例方法名  →  第一个参数作为方法调用者,其余参数作为方法入参  
+Arrays.sort(names, String::compareToIgnoreCase); //类名::实例方法名 
+System.out.println(Arrays.toString(names));
 ```
 
 #### ④ 构造方法引用
