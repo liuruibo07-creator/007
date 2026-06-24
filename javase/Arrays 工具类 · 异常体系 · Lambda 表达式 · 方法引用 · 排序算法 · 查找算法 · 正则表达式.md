@@ -270,6 +270,24 @@ Arrays.sort(students,CompareByData::compareAsc);//类名::静态方法名
 // 前提
 // - 实例方法的形参类型 与 抽象方法形参类型 一致
 // - 实例方法的返回值类型 与 抽象方法返回值类型 一致
+
+Student[] students = new Student[4];  
+students[0] = new Student("张三", 169, 23);  
+students[1] = new Student("李四", 163, 26);  
+students[2] = new Student("王五", 164, 26);  
+students[3] = new Student("赵六", 167, 24);  
+//对学生数组采用比较器排序  
+/*Arrays.sort(students, new Comparator<Student>() {  
+    @Override    
+    public int compare(Student o1, Student o2) {        
+    //根据年龄升序,如果年龄一样,再根据身高升序  
+        int result = o1.getAge() - o2.getAge();        
+        result = result == 0 ? o1.getHeight() - o2.getHeight() : result;       
+        return result;    
+}})
+CompareByData compareByData=new CompareByData();  
+Arrays.sort(students,compareByData::compareDesc);  
+System.out.println(Arrays.toString(students));
 ```
 
 #### ③ 特殊方法引用（类的实例方法引用）
