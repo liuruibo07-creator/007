@@ -126,6 +126,33 @@ public class MyException extends RuntimeException {
 }
 ```
 
+### 3.相关代码
+```java
+public static void main(String[] args) {  
+   /* method1();*/  
+    //主方法中写了try-catch,catch匹配成功,可以处理method2方法中抛出的异常  
+   /*try {  
+        method2();    } catch ( NullPointerException e) {        System.out.println("空指针异常");  
+    }*/    try {  
+        method3(null);  
+    }  
+    catch (NullPointerException e) {  
+        System.out.println("空指针异常");  
+    }  
+  
+}
+
+
+
+public static void method3(int[] arr) {  
+    if (arr == null) {  
+        throw new NullPointerException("空指针异常");  
+    }  
+    for (int i = 0; i < arr.length; i++) {  
+        System.out.println(arr[i]);  
+    }  
+}
+```
 ---
 
 ## 三、Lambda 表达式
