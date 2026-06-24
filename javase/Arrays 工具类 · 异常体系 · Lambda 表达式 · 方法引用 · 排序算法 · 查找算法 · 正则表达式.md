@@ -438,7 +438,25 @@ public static int sequentialSearch(int[] arr, int number) {
 |---|---|---|
 | 顺序查找 | 无序或有序均可 | O(n) |
 | 二分查找 | 必须有序（升序） | O(log n) |
-
+```java
+public static int binarySearch(int[] arr, int number) {  
+    int left=0;  
+    int right=arr.length-1;  
+    while (left<=right){  
+        int mid = (left+right)/2;  
+        if(arr[mid]>number){  
+            right=mid-1;  
+        }  
+        else if(arr[mid]<number){  
+            left=mid+1;  
+        }  
+        else{  
+            return mid;  
+        }  
+    }  
+    return -1;  
+}
+```
 ---
 
 ## 七、正则表达式（Regular Expression）
