@@ -300,6 +300,23 @@ System.out.println(Arrays.toString(students));
 // - 被引用的实例方法定义在抽象方法第一个形参的数据类型中
 // - 抽象方法的第一个形参作为实例方法的调用者
 // - 抽象方法的其余形参作为实例方法的入参
+
+  String[] names = {"boby", "angela", "Andy", "dlei", "caocao", "Babo", "jack", "Cici", "caocaoccc", "b"};  
+  //采用的是自然排序接口,按照字母的码表值升序,也就是按字母的升序排列,如果一样,则按照字符串的长度升序  
+ Arrays.sort(names);  
+  System.out.println(Arrays.toString(names));*/  
+  //需求:要求忽略字符大小写进行升序排序。  
+//构造器
+ Arrays.sort(names, new Comparator<String>() {  
+      @Override      
+      public int compare(String o1, String o2) {          
+      return o1.compareToIgnoreCase(o2);      
+}});
+//lambda
+Arrays.sort(names,(String o1, String o2)->{  
+    return o1.compareToIgnoreCase(o2);  
+});
+
 ```
 
 #### ④ 构造方法引用
