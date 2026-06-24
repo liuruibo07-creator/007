@@ -193,7 +193,7 @@ JDK 8 新特性，用于**简化匿名内部类**的书写。
 
 > **函数式接口** = 有且仅有**一个抽象方法**的接口
 
-- `Object` 类中 `public` 的非 `final` 抽象方法（如 `toString`、`equals`、`hashCode`(int)）**不算在内**。
+- `Object` 类中 `public` 的非 `final` 抽象方法（如 `toString`、`equals(boolean)`、`hashCode`(int)）**不算在内**。
 - 可通过 `@FunctionalInterface` 注解校验。
 
 ### 3.4 书写技巧
