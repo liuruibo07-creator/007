@@ -363,7 +363,9 @@ public static void createCar(CarFactory factory, String brand, double price) {
                → 轮次2: 次大值归位
                → 轮次3: 排序完成
 ```
+```java
 
+```
 ---
 
 ### 5.2 选择排序（Selection Sort）
