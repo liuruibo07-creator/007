@@ -61,7 +61,7 @@ System.out.println(Arrays.toString(split));
 ---
 
 ## 二、集合体系总览
-
+![](assets/day30_笔记总结/file-20260625205948884.png)
 
 ```
 集合
