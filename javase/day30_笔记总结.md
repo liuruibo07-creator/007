@@ -44,7 +44,9 @@ String group1 = matcher.group(1);      // 返回第 1 个分组匹配的内容
 |---|---|
 | `replaceAll(String regex, String replacement)` | 将满足正则规则的内容全部替换为指定字符串 |
 | `split(String regex)` | 按照正则规则对字符串进行切割，返回 `String[]` |
+```
 
+```
 ---
 
 ## 二、集合体系总览
