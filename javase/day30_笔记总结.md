@@ -93,7 +93,10 @@ System.out.println(Arrays.toString(split));
 | `size()` | 获取集合元素个数 |
 | `toArray()` | 将集合转换为 `Object[]` 数组 |
 | `toArray(T[] t)` | 将集合转换为指定类型数组，推荐写法：`toArray(new String[0])` |
-
+```java
+String[] arr1=c.toArray(new String[0]);  
+System.out.println(Arrays.toString(arr1));
+```
 ---
 
 ### 3.2 通用遍历方式
