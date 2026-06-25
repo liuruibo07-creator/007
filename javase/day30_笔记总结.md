@@ -362,6 +362,29 @@ linkedList.pop();               // 出栈 → 等同于 removeFirst
 **如何去重？**
 > 通过比较规则判断，若比较结果为 0（相等）则不存入，**不依赖 `hashCode` 和 `equals`**。
 
+```java
+ TreeSet<Student> set2 = new TreeSet<>();  
+    set2.add(new Student("张三", 23, 169.7));  
+    set2.add(new Student("李四", 22, 169.8));  
+    set2.add(new Student("王五", 26, 165.5));  
+    set2.add(new Student("赵六", 22, 183.5));  
+    System.out.println(set2);  
+    //无参构造，自然排序
+    @Override  
+    public int compareTo(Student o) {  
+    // 按照年龄升序，年龄一样按照身高降序  
+    int rs1 = this.getAge() - o.getAge();  
+    return rs1 == 0 ? Double.compare(o.getHeight(), this.getHeight()) : rs1;  
+}
+    //比较器排序  
+    TreeSet<Student> set3 = new TreeSet<>(new Comparator<Student>() {  
+            @Override  
+            public int compare(Student o1, Student o2) {  
+                return o1.getAge() - o2.getAge();  
+            }  
+    });  
+}
+```
 ---
 
 ## 六、单列集合技术选型
