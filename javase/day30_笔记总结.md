@@ -44,12 +44,24 @@ String group1 = matcher.group(1);      // 返回第 1 个分组匹配的内容
 |---|---|
 | `replaceAll(String regex, String replacement)` | 将满足正则规则的内容全部替换为指定字符串 |
 | `split(String regex)` | 按照正则规则对字符串进行切割，返回 `String[]` |
-```
-
+```java
+// 需求1：请把 张三ai8888李四999aa5566王五fbbfsfs42425赵六，中间的非中文字符替换成 “-”String s1 = "张三ai8888李四999aa5566王五fbbfsfs42425赵六";  
+System.out.println(s1.replaceAll("\\w+", "-"));  
+  
+// 2、public String[] split(String regex)：按照正则表达式匹配的内容进行分割字符串，返回一个字符串数组。  
+// 需求1：请把 张三ai8888李四999aa5566王五fbbfsfs42425赵六，中的人名获取出来。  
+String s3 = "张三ai8888李四999aa5566王五fbbfsfs42425赵六";  
+String[] names = s3.split("\\w+");  
+System.out.println(Arrays.toString(names));  
+  
+String str = "张三,23";  
+String[] split = str.split(",");  
+System.out.println(Arrays.toString(split));
 ```
 ---
 
 ## 二、集合体系总览
+![697](assets/day30_笔记总结/file-20260625205817560.png)
 
 ```
 集合
