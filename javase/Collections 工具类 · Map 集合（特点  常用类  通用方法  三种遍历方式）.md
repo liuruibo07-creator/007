@@ -18,10 +18,16 @@ JDK 5 引入的新特性，是一种**特殊的形参**，可以定义在方法�
 }
 
 // 示例
-public static int sum(int... nums) {
-    int total = 0;
-    for (int n : nums) total += n;
-    return total;
+public static void main(String[] args) {  
+    System.out.println(getSum(1, 2));  
+}
+
+public static int getSum(int...arr){  
+    int sum=0;  
+    for(int i:arr){  
+        sum+=i;  
+    }  
+    return sum;  
 }
 ```
 
