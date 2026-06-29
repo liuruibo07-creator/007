@@ -215,8 +215,14 @@ map.forEach((key, value) -> System.out.println(key + " → " + value));
 ---
 >案例代码
 
-```
-
+```java
+/*  
+    HashMap: 存取无序，不重复，无索引,  
+    LinkedHashMap: 存取有序，不重复，无索引  
+    TreeMap: 可排序，不重复，无索引  
+    注意: 当有重复的key时,后面的value会覆盖之前的value  
+    以上规则只针对key.  
+ */
 ```
 ## 📝 本日知识点总览
 
