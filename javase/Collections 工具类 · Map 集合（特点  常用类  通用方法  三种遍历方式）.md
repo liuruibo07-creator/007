@@ -213,7 +213,11 @@ map.forEach((key, value) -> System.out.println(key + " → " + value));
 | `forEach()` | key + value 同时获取 | ⭐ 最简洁 | 日常开发首选 |
 
 ---
+>案例代码
 
+```
+
+```
 ## 📝 本日知识点总览
 
 ```
