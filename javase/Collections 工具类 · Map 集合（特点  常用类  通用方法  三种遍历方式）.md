@@ -257,6 +257,8 @@ map.forEach(new BiConsumer<String, Integer>() {
 
 // Lambda 简化写法（推荐）
 map.forEach((key, value) -> System.out.println(key + " → " + value));
+
+
 ```
 
 **适用场景：** 代码最简洁，日常开发**最推荐**使用。
