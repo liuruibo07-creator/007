@@ -259,6 +259,22 @@ map.forEach(new BiConsumer<String, Integer>() {
 map.forEach((key, value) -> System.out.println(key + " → " + value));
 
 
+public static void main(String[] args) {  
+    Map<String, Double> map = new HashMap<>();  
+    map.put("张三", 162.5);  
+    map.put("李四", 165.8);  
+    map.put("王五", 169.5);  
+    map.put("赵六", 183.6);  
+    //匿名内部类  
+    map.forEach(new BiConsumer<String, Double>() {  
+            @Override  
+        public void accept(String key, Double value) {  
+            System.out.println(key + ":" + value);  
+        }  
+                });  
+    map.forEach((k,v)->{  
+        System.out.println(k + ":" + v);  
+    });
 ```
 
 **适用场景：** 代码最简洁，日常开发**最推荐**使用。
