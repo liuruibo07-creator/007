@@ -136,7 +136,9 @@ Map
 | `values()` | 返回所有 value 组成的 `Collection` 集合 |
 | `entrySet()` | 返回所有键值对组成的 `Set<Map.Entry<K,V>>` 集合 |
 ```java
-
+//方法的作用: 把集合中的元素,存储到指定的数组中  
+String[] arr1=c.toArray(new String[0]);  
+System.out.println(Arrays.toString(arr1));
 ```
 ---
 
