@@ -88,7 +88,32 @@ Collections.sort(list, (a, b) -> b - a);
 // 打乱顺序
 Collections.shuffle(list);
 ```
-
+```java
+public class Test {  
+    public static void main(String[] args) {  
+        ArrayList<String> list = new ArrayList<>();  
+        //批量添加数据  
+        Collections.addAll(list,"aa","bb","ccc","cc");  
+        System.out.println(list);  
+        //打乱顺序  
+        Collections.shuffle(list);  
+        System.out.println(list);  
+        //按照自然排序规则进行排序  
+        //按照编码值和长度进行排序  
+        Collections.sort(list);  
+        System.out.println(list);  
+        //按照比较器排序规则进行排序  
+        //按照长度进行排序,长度相同按照编码值进行排序,降序  
+        Collections.sort(list, new Comparator<String>() {  
+            @Override  
+            public int compare(String o1, String o2) {  
+                return o2.length()-o1.length();  
+            }  
+        });  
+        System.out.println(list);  
+    }  
+}
+```
 ---
 
 ## 三、Map 集合（双列集合）
