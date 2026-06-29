@@ -164,6 +164,31 @@ Map
 //方法的作用: 把集合中的元素,存储到指定的数组中  
 String[] arr1=c.toArray(new String[0]);  
 System.out.println(Arrays.toString(arr1));
+
+
+
+public static void main(String[] args) {  
+    //创建Map集合  
+    Map<String, Integer> map = new HashMap<>();  
+    //public V put(K key, V value) : 可以实现添加和修改的作用  
+    map.put("aaa", 123);  
+    map.put("bbb", 165);  
+    map.put("ccc", 145);  
+    //删除元素 根据键删  
+    map.remove("aaa");  
+    System.out.println(map);  
+    System.out.println(map.size());  
+    System.out.println(map.get("bbb"));  
+    System.out.println(map.isEmpty());  
+    System.out.println(map.containsKey("ccc"));  
+    System.out.println(map.containsValue(145));  
+    Set<String> keys=map.keySet();  
+    System.out.println(keys);  
+    //获取Map集合的全部值 按照添加的顺序  
+    Collection<Integer> values=map.values();  
+    System.out.println(values);  
+  
+}
 ```
 ---
 
