@@ -226,6 +226,15 @@ for (Map.Entry<String, Integer> entry : entries) {
     Integer value = entry.getValue();
     System.out.println(key + " → " + value);
 }
+
+
+/*  
+    Map集合遍历方式二:获取所有的键值对,然后通过键值对通过key和value  
+    entrySet(): 获取所有键值对Entry对象,并返回set集合  
+    getKey(): 获取键值对Entry对象的key  
+    getValue(): 获取键值对Entry对象的value  
+*/
+
 ```
 
 **适用场景：** 需要同时操作 key 和 value，**推荐使用**，性能优于 keySet 方式。
