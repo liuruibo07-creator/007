@@ -134,8 +134,23 @@ Stream<String> merged = Stream.concat(stream1, stream2);
 | `forEach(Consumer)` | 遍历，接收**消费型**函数式接口 `Consumer` |
 | `count()` | 返回流中数据的个数 |
 | `collect(Collector)` | 收集流中的元素，转换为集合 |
-```
-
+```java
+public static void main(String[] args) {  
+    List<Double> scores = new ArrayList<>();  
+    Collections.addAll(scores, 88.5, 100.0, 60.0, 99.0, 9.5, 99.6, 25.0);  
+    //需求1:统计及格成绩数量  
+    long count = scores.stream().filter(score -> score >= 60).count();  
+    System.out.println("----------");  
+    // 需求2：请找出身高超过170的学生对象，并放到一个新集合中去返回。  
+    List<Student> list = new ArrayList<>();  
+    Collections.addAll(list, new Student("张三", 162.5), new Student("李四", 165.8), new Student("王五", 179.5), new Student("赵六", 183.6));  
+    List<Student> newList = list.stream().filter(student -> student.getHeight() > 170).collect(Collectors.toList());  
+    System.out.println(newList);  
+    // 需求3：请找出身高超过170的学生对象，并把学生对象的名字和身高，存入到一个Map集合返回。  
+    List<Student> list2 = new ArrayList<>();  
+    Collections.addAll(list2, new Student("张三", 162.5), new Student("李四", 165.8), new Student("王五", 179.5), new Student("赵六", 183.6));  
+    list2.stream().filter(student -> student.getHeight() > 170).collect(Collectors.toMap(Student::getName, Student::getHeight));  
+}
 ```
 **`collect` 常用收集方式：**
 
