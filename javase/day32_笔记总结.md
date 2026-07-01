@@ -92,7 +92,11 @@ Stream<String> merged = Stream.concat(stream1, stream2);
     stream.sorted().forEach(System.out::println);  
     //需求3:将成绩降序排序,并打印输出  
     /*stream.sorted(new Comparator<Double>() {  
-        @Override        public int compare(Double o1, Double o2) {            return o2.compareTo(o1);        }    });*/    stream.sorted((o1, o2) -> o2.compareTo(o1)).forEach(System.out::println);  
+        @Override        
+        public int compare(Double o1, Double o2) {            
+        return o2.compareTo(o1);        
+        }    });*/   
+         stream.sorted((o1, o2) -> o2.compareTo(o1)).forEach(System.out::println); 
     System.out.println("-------------------------");  
     //需求4：取出前三名成绩并输出  
     stream.sorted((o1, o2) -> o2.compareTo(o1)).limit(3).forEach(System.out::println);  
@@ -109,7 +113,11 @@ Stream<String> merged = Stream.concat(stream1, stream2);
     //需求7:将每一个考试成绩加10,并打印输出  
     //对元素进行加工并返回加工之后的结果  
     /*stream.map(new Function<Double, Double>() {  
-        @Override        public Double apply(Double score) {            return score+10;        }    })*/    stream.map(score->score+10).forEach(System.out::println);  
+        @Override       
+         public Double apply(Double score) {           
+          return score+10;        
+          }    })*/    
+          stream.map(score->score+10).forEach(System.out::println);  
     //需求8:将stream1和stream2 二个流进行合并并打印输出  
     Stream<String> st1 = Stream.of("张三", "李四");  
     Stream<String> st2 = Stream.of("张三2", "李四2", "王五");  
