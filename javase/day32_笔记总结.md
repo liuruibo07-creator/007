@@ -149,7 +149,7 @@ public static void main(String[] args) {
     // 需求3：请找出身高超过170的学生对象，并把学生对象的名字和身高，存入到一个Map集合返回。  
     List<Student> list2 = new ArrayList<>();  
     Collections.addAll(list2, new Student("张三", 162.5), new Student("李四", 165.8), new Student("王五", 179.5), new Student("赵六", 183.6));  
-    list2.stream().filter(student -> student.getHeight() > 170).collect(Collectors.toMap(Student::getName, Student::getHeight));  
+    list2.stream().filter(student -> student.getHeight()>170).collect(Collectors.toMap(Student::getName, Student::getHeight));  
 }
 ```
 **`collect` 常用收集方式：**
