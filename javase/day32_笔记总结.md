@@ -38,9 +38,9 @@ Stream<String> s1 = list.stream();
 Map<String, Integer> map = new HashMap<>();
 Stream<String> s2 = map.keySet().stream();
 
-// 数组
-int[] arr = {1, 2, 3};
-IntStream s3 = Arrays.stream(arr);
+//4.如何获取数组的Stream流  
+String[] arr = {"张三", "李四", "王五", "赵六"};  
+Stream<String> s1 = Arrays.stream(arr);
 
 // 零散数据
 Stream<Integer> s4 = Stream.of(1, 2, 3, 4);
