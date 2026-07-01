@@ -76,7 +76,45 @@ list.stream()
 // 合并流
 Stream<String> merged = Stream.concat(stream1, stream2);
 ```
-
+```java
+ List<Double> scores = new ArrayList<>();  
+    Collections.addAll(scores, 88.5, 100.0, 60.0, 99.0, 9.5, 99.6, 25.0);  
+    //需求1:找出成绩大于等于60分的数据,并打印输出  
+    Stream<Double> stream = scores.stream();  
+    stream.filter(new Predicate<Double>() {  
+        @Override  
+        public boolean test(Double score) {  
+            return score >= 60;  
+        }  
+    });  
+    stream.filter(score -> score >= 60).forEach(System.out::println);  
+    //需求2:将成绩升序排序,并打印输出  
+    stream.sorted().forEach(System.out::println);  
+    //需求3:将成绩降序排序,并打印输出  
+    /*stream.sorted(new Comparator<Double>() {  
+        @Override        public int compare(Double o1, Double o2) {            return o2.compareTo(o1);        }    });*/    stream.sorted((o1, o2) -> o2.compareTo(o1)).forEach(System.out::println);  
+    System.out.println("-------------------------");  
+    //需求4：取出前三名成绩并输出  
+    stream.sorted((o1, o2) -> o2.compareTo(o1)).limit(3).forEach(System.out::println);  
+    System.out.println("-------------------------");  
+    //需求5：取出后二名成绩并输出  
+    //方式一 升序获取前面二个  
+    stream.sorted().limit(2).forEach(System.out::println);  
+    //方式二 降序跳过前面n-2个  
+    stream.sorted((o1, o2) -> o2.compareTo(o1)).skip(5).forEach(System.out::println);  
+    //需求6：去重重复分数并打印输出  
+     scores.add(88.5);  
+     scores.stream().distinct().forEach(System.out::println);  
+    //distinct去重复，自定义类型的对象（希望内容一样就认为重复，重写hashCode,equals）  
+    //需求7:将每一个考试成绩加10,并打印输出  
+    //对元素进行加工并返回加工之后的结果  
+    /*stream.map(new Function<Double, Double>() {  
+        @Override        public Double apply(Double score) {            return score+10;        }    })*/    stream.map(score->score+10).forEach(System.out::println);  
+    //需求8:将stream1和stream2 二个流进行合并并打印输出  
+    Stream<String> st1 = Stream.of("张三", "李四");  
+    Stream<String> st2 = Stream.of("张三2", "李四2", "王五");  
+}
+```
 ---
 
 ### 1.5 终结方法
