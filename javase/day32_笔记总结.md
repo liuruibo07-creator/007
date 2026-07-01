@@ -134,7 +134,9 @@ Stream<String> merged = Stream.concat(stream1, stream2);
 | `forEach(Consumer)` | 遍历，接收**消费型**函数式接口 `Consumer` |
 | `count()` | 返回流中数据的个数 |
 | `collect(Collector)` | 收集流中的元素，转换为集合 |
+```
 
+```
 **`collect` 常用收集方式：**
 
 | 收集器 | 说明 |
