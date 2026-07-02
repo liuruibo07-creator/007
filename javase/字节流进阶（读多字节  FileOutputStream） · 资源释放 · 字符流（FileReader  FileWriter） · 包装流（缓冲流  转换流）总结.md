@@ -277,7 +277,10 @@ InputStreamReader isr = new InputStreamReader(
 
 - **打印流**（如 `PrintStream` / `PrintWriter`）
 - **序列化流**（如 `ObjectInputStream` / `ObjectOutputStream`）
-
+```
+ 只要是实现了 Serializable 的类，一定要手动声明 serialVersionUID，否则类结构一有变动，JVM 自动生成的版本号就会跟着变，导致反序列化时版本不兼容而报错。
+    可以通过指定序列化版本号来解决.private static final long serialVersionUID = 1L;
+```
 ---
 
 ## 📝 本日知识点总览
