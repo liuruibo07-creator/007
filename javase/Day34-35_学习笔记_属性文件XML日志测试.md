@@ -193,6 +193,9 @@ Step 4  在需要记录日志的方法中，通过日志记录器对象记录日
 
 ```java
 private static final Logger log = LoggerFactory.getLogger(Test.class);
+public static void main(String[] args) {  
+    log.info("info: 记录info级别的日志");  
+}
 ```
 
 **Step 4 示例**：日志记录器对象提供了不同**日志级别**的方法，如 `log.debug(...)`、`log.info(...)` 等。
