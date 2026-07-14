@@ -104,6 +104,8 @@ XML
 **DOM4J 解析步骤：**
 
 ```java
+//获取解析器对象
+
 // 1. 读取 xml 文件，返回 Document 对象
 Document document = new SAXReader().read(xmlFile);
 
