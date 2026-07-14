@@ -141,6 +141,7 @@ XML
 
 ```java
 //获取解析器对象
+SAXReader saxReader=new SAXReader();
 
 // 1. 读取 xml 文件，返回 Document 对象
 Document document = new SAXReader().read(xmlFile);
