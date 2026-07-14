@@ -79,8 +79,44 @@ XML
 | 5 | 文件后缀为 `.xml` |
 | 6 | 特殊字符 `<`、`&` 需用转义符代替：`&lt;`、`&amp;` |
 | 7 | 若特殊字符较多，可使用 **CDATA 区** 包裹 |
-```
-
+```java
+<?xml version="1.0" encoding="UTF-8" ?>  
+  
+<!-- 规则1：必须在第一行第一列写文档声明 (如上) -->  
+<!-- 规则2：有且仅有一个根标签 -->  
+<students>  
+  
+    <!-- 规则3：标签成对出现：有开始标签，也有结束标签 -->  
+    <student>  
+        <!-- 规则4：标签可以自定义属性 -->  
+        <name id="1">张三</name>  
+        <age>20</age>  
+        <gender>男</gender>  
+        <info>成绩优秀 &amp; 表现积极</info>  
+  
+        <!-- 规则6：特殊字符 < 、& 需用转义符号代替：&lt;、&amp; -->  
+        <score>数学：90分，排名 &lt; 前十名</score>  
+  
+        <!-- 规则7：若特殊字符较多，可使用 CDATA 区包裹 -->  
+        <description><![CDATA[  
+            学生评价：  
+            成绩 >= 90 分为优秀  
+            80 <= 成绩 < 90 为良好  
+            特殊符号：< > & " ' 等都可以直接写  
+        ]]></description>  
+    </student>  
+    <student>        
+        <name id="2">李四</name>  
+        <age>21</age>  
+        <gender>女</gender>  
+        <info>性格开朗 &amp; 团队合作能力强</info>  
+        <score>英语：88分，排名 &lt; 前五名</score>  
+        <description><![CDATA[  
+            备注：  
+            该学生参加了多个竞赛项目            获得 <一等奖> & <二等奖>  
+        ]]></description>  
+    </student>  
+</students>
 ```
 ### 2.3 XML 的作用
 
