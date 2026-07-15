@@ -249,7 +249,94 @@ synchronized (lockB) {
 | `wait()` | 让当前线程**等待**（释放锁并阻塞） |
 | `notify()` | **随机唤醒**一个正在等待的线程 |
 | `notifyAll()` | **唤醒所有**正在等待的线程 |
-
+```java
+public class Cook extends Thread{  
+    @Override  
+    public void run() {  
+        while(true) {  
+            synchronized (desk.lock) {  
+                //如果桌子上没有汉堡，则停止做菜  
+                if(desk.foodCount==0){  
+                    break;  
+                }  
+                else{  
+                    //如果桌子上有汉堡，则等待  
+                    if(desk.hasFood){  
+                        try {  
+                            desk.lock.wait();  
+                        }  
+                        catch (InterruptedException e) {  
+                            e.printStackTrace();  
+                        }  
+                    }  
+                    else{  
+                       //如果桌子上没有汉堡，则做菜  
+                        System.out.println("做汉堡");  
+                        desk.hasFood=true;  
+                        //唤醒吃货  
+                        desk.lock.notifyAll();  
+                    }  
+                }  
+            }  
+        }  
+    }  
+}
+```
+```java
+public class Foodle extends Thread{  
+    @Override  
+    public void run() {  
+        while(true) {  
+            synchronized (desk.lock) {  
+                if(desk.foodCount==0){  
+                    break;  
+                }  
+                else{  
+                    if(desk.hasFood){  
+                        //如果桌子上有汉堡，则开吃  
+                        System.out.println("吃了一个汉堡");  
+                        desk.hasFood=false;  
+                        desk.foodCount--;  
+                        //吃完唤醒生产者  
+                        desk.lock.notifyAll();  
+                    }  
+                    else{  
+                        try {  
+                            //如果桌子上没有汉堡，则等待  
+                            desk.lock.wait();  
+                        }  
+                        catch (InterruptedException e) {  
+                            e.printStackTrace();  
+                        }  
+                    }  
+                }  
+            }  
+        }  
+    }  
+}
+```
+```java
+package com.scedu.code.d2_thread_communication;  
+  
+public class desk {  
+    //桌子上是否有汉堡  
+    public static boolean hasFood = false;  
+    //定义锁对象  
+    public static Object lock = new Object();  
+    //汉堡数量  
+    public static int foodCount = 0;  
+}
+```
+```java
+public class Test {  
+    public static void main(String[] args) {  
+        Foodle foodle = new Foodle();  
+        Cook cook = new Cook();  
+        foodle.start();  
+        cook.start();  
+    }  
+}
+```
 ---
 
 ## 八、知识速查表
