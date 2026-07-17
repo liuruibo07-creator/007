@@ -115,6 +115,7 @@ ThreadPoolExecutor pool = new ThreadPoolExecutor(
 
 > 📌 该部分笔记原文仅列出要点框架（线程 6 种状态及其转换关系），具体状态图建议结合 `Thread.State` 枚举（NEW / RUNNABLE / BLOCKED / WAITING / TIMED_WAITING / TERMINATED）进一步学习。
 
+![](assets/Day37_学习笔记_线程池与网络编程/file-20260717090808098.png)
 ---
 
 ## 四、网络编程概述
