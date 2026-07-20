@@ -331,7 +331,15 @@ public void testUseField() throws Exception {
     field1.setAccessible(true);  
     Cat cat=new Cat();  
     field.set(cat,"tom");  
+}
+public void testUseMethod() throws Exception {  
+    Cat cat=new Cat();  
+    Class<?extends Cat> c1 = cat.getClass();  
+    Method method = c1.getMethod("eat",String.class);  
   
+    method.invoke(cat);  
+    method.invoke(cat,"鱼");  
+    method.invoke(cat,1);  
 }
 
 ```
