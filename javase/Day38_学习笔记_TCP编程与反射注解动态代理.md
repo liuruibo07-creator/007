@@ -443,7 +443,33 @@ public @interface Myanno {
 > 📌 `Class`、`Method`、`Field`、`Constructor` 对象都拥有上述方法。
 
 ```java
-
+public class AnnotationTest4 {  
+    @MyTest  
+    public void test1() {  
+        System.out.println("AnnotationTest4.test1");  
+    }  
+  
+    public void test2() {  
+        System.out.println("AnnotationTest4.test2");  
+    }  
+  
+    @MyTest  
+    public void test3() {  
+        System.out.println("AnnotationTest4.test3");  
+    }  
+  
+    public static void main(String[] args) throws Exception{  
+        Class<AnnotationTest4> clas=AnnotationTest4.class;  
+        Constructor< AnnotationTest4> constructor=clas.getDeclaredConstructor();  
+        AnnotationTest4 obj=constructor.newInstance();  
+        Method[] methods=clas.getDeclaredMethods();  
+        for(Method m:methods){  
+            if(m.isAnnotationPresent(MyTest.class)){  
+                m.invoke(obj);  
+            }  
+        }  
+  
+    }
 ```
 ---
 
