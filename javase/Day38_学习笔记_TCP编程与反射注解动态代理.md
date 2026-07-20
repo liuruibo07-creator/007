@@ -18,7 +18,19 @@ TCP 通信的最基础模型：客户端发一次、服务端收一次。
 | 2 | 通过 socket 获取字节输出流，使用 `DataOutputStream` 包装原始流 |
 | 3 | 写数据：`writeUTF(string)` |
 | 4 | 释放资源：`socket.close()` |
-
+```java
+public static void main(String[] args) throws Exception {  
+    //1.创建客户端Socket对象,指定服务器端ip和端口  
+    Socket socket=new Socket("127.0.0.1",10086);  
+    //2.从socket对象中获取字节输出流,用来给服务端发送数据  
+    OutputStream os=socket.getOutputStream();  
+    DataOutputStream dos=new DataOutputStream(os);  
+    //3.写数据  
+    dos.writeUTF("hello,服务器");  
+    //4.释放资源  
+    dos.close();  
+}
+```
 **服务端流程**
 
 | 步骤 | 操作 |
