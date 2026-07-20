@@ -153,7 +153,23 @@ public class MyThread extends Thread{
         }  
     }  
 }
-
+public class Server {  
+    public static void main(String[] args) throws Exception {  
+        //1.创建服务端ServerSocket对象,指定监听的端口  
+        ServerSocket ss = new ServerSocket(10010);  
+        //2.通过accept方法来监听客户端的连接 如果有客户端连接上来返回与客户端对应的socket对象,否则一致等待.  
+  
+        while (true) {  
+            //2.1 通过accept方法来监听客户端的连接 如果有客户端连接上来返回与客户端对应的socket对象,否则一致等待.  
+            Socket socket = ss.accept();  
+            //2.2 把这个客户端对应的socket通信管道，交给一个独立的线程负责处理。  
+            //2.3 使用多线程技术，实现多个客户端同时收发消息。  
+            new MyThread(socket).start();  
+        }  
+        //3.从socket对象中得到字节输入流,用来接受数据  
+  
+    }  
+}
 ```
 ### 4. BS 架构通信
 
