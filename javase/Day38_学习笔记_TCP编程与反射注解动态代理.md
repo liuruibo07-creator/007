@@ -59,7 +59,46 @@ public static void main(String[] args) throws Exception {
 ### 2. 多发多收
 
 在"单发单收"的基础上，加上 `while(true)` 循环，实现客户端与服务端之间的持续通信。
-```
+```java
+//client
+public static void main(String[] args) throws Exception {  
+    //1.创建客户端Socket对象,指定服务器端ip和端口  
+    Socket socket = new Socket("127.0.0.1",10010);  
+    //2.从socket对象中获取字节输出流,用来给服务端发送数据  
+    OutputStream os = socket.getOutputStream();  
+    DataOutputStream dos = new DataOutputStream(os);  
+    Scanner sc = new Scanner(System.in);  
+    while (true){  
+        System.out.println("请输入：");  
+        String msg = sc.next();  
+        if("exit".equals(msg)){  
+            socket.close();  
+            break;  
+        }  
+        dos.writeUTF(msg);  
+    }  
+}
+//server
+public static void main(String[] args) throws Exception {  
+    //1.创建服务端ServerSocket对象,指定监听的端口  
+    ServerSocket ss = new ServerSocket(10010);  
+    //2.通过accept方法来监听客户端的连接 如果有客户端连接上来返回与客户端对应的socket对象,否则一致等待.  
+    Socket socket = ss.accept();  
+    //3.从socket对象中得到字节输入流,用来接受数据  
+    InputStream is = socket.getInputStream();  
+    DataInputStream dis = new DataInputStream(is);  
+    while (true){  
+        try {  
+            String msg = dis.readUTF();  
+            System.out.println(msg);  
+        } catch (IOException e) {  
+            SocketAddress remoteSocketAddress = socket.getRemoteSocketAddress();  
+            System.out.println(remoteSocketAddress+"下线了");  
+            break;  
+        }  
+    }  
+}
+
 
 ```
 ### 3. 多客户端发送
