@@ -426,6 +426,12 @@ public @interface Myanno {
 
 **`@Documented`**：表示自定义注解可以体现在 API 文档中。
 
+```java
+//ElementType.METHOD 指定注解使用在方法上,ElementType.TYPE 指定注解使用在类上  
+@Target({ElementType.METHOD,ElementType.TYPE})//指定注解使用的位置  
+@Retention(RetentionPolicy.RUNTIME)//指定注解的存活时间
+```
+
 ### 4. 注解解析
 
 | 方法 | 作用 |
