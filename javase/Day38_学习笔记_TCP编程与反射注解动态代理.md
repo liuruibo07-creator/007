@@ -12,12 +12,14 @@ TCP 通信的最基础模型：客户端发一次、服务端收一次。
 
 **客户端流程**
 
-| 步骤 | 操作 |
-|---|---|
-| 1 | 创建客户端对象：`new Socket(服务器ip, 服务器的端口)` |
-| 2 | 通过 socket 获取字节输出流，使用 `DataOutputStream` 包装原始流 |
-| 3 | 写数据：`writeUTF(string)` |
-| 4 | 释放资源：`socket.close()` |
+>socket：`套接字`
+
+| 步骤  | 操作                                            |
+| --- | --------------------------------------------- |
+| 1   | 创建客户端对象：`new Socket(服务器ip, 服务器的端口)`           |
+| 2   | 通过 socket 获取字节输出流，使用 `DataOutputStream` 包装原始流 |
+| 3   | 写数据：`writeUTF(string)`                        |
+| 4   | 释放资源：`socket.close()`                         |
 ```java
 public static void main(String[] args) throws Exception {  
     //1.创建客户端Socket对象,指定服务器端ip和端口  
@@ -143,8 +145,20 @@ public class ServerRunnable implements Runnable {
             e.printStackTrace();  
         }  
     }
+
+public static void main(String[] args) throws Exception {  
+    System.out.println("===服务端启动===");  
+    //1.创建ServerSocket的对象，同时为服务端注册端口。  
+    ServerSocket serverSocket = new ServerSocket(8080);  
+    while (true) {  
+        //2.使用serverSocket对象，调用一个accept方法，等待客户端的连接请求  
+        Socket socket = serverSocket.accept();  
+        //3.把这个客户端对应的socket通信管道，交给一个独立的线程负责处理。  
+        new Thread(new ServerRunnable(socket)).start();  
+    }  
+}
 ```
-```
+
 ### 5. 使用线程池改造
 
 不再每次手动创建新线程，而是使用 `ThreadPoolExecutor` 线程池来管理连接线程，避免频繁创建/销毁线程的开销。
