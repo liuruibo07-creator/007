@@ -33,14 +33,29 @@ public static void main(String[] args) throws Exception {
 ```
 **服务端流程**
 
-| 步骤 | 操作 |
-|---|---|
-| 1 | 创建服务端对象：`new ServerSocket(注册服务器端口)` |
-| 2 | `accept()`：监听客户端连接；若连接成功，返回服务端对应该客户端的 socket |
-| 3 | 通过服务端 socket 获取字节输入流，使用 `DataInputStream` 包装 |
-| 4 | 读数据：`readUTF()` |
-| 5 | 释放资源：`close()` |
-
+| 步骤  | 操作                                           |
+| --- | -------------------------------------------- |
+| 1   | 创建服务端对象：`new ServerSocket(注册服务器端口)`          |
+| 2   | `accept()`：监听客户端连接；若连接成功，返回服务端对应该客户端的 socket |
+| 3   | 通过服务端 socket 获取字节输入流，使用 `DataInputStream` 包装 |
+| 4   | 读数据：`readUTF()`                              |
+| 5   | 释放资源：`close()`                               |
+```java
+public static void main(String[] args) throws Exception {  
+    //1.创建服务端ServerSocket对象,指定监听的端口  
+    ServerSocket server =new ServerSocket(10086);  
+    //2.通过accept方法来监听客户端的连接 如果有客户端连接上来返回与客户端对应的socket对象,否则一致等待.  
+    Socket socker=server.accept();  
+    //3.从socket对象中得到字节输入流,用来接受数据  
+    InputStream is=socker.getInputStream();  
+    DataInputStream dis=new DataInputStream(is);  
+    //4.读数据  
+    String msg=dis.readUTF();  
+    System.out.println(msg);  
+    //5.释放资源  
+    dis.close();  
+}
+```
 ### 2. 多发多收
 
 在"单发单收"的基础上，加上 `while(true)` 循环，实现客户端与服务端之间的持续通信。
