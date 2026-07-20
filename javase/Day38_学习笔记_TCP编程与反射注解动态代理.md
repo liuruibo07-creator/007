@@ -59,7 +59,9 @@ public static void main(String[] args) throws Exception {
 ### 2. 多发多收
 
 在"单发单收"的基础上，加上 `while(true)` 循环，实现客户端与服务端之间的持续通信。
+```
 
+```
 ### 3. 多客户端发送
 
 - **默认不生效的原因**：多个客户端同时连接时，只有 main 线程在跑，`accept()` 只执行了一次，无法应对多个连接。
