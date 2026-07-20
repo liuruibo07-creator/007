@@ -513,26 +513,38 @@ public class Test {
         //newProxyInstance方法的返回值是Star接口的子类对象,所以强转为Star接口类型  
         Star proxyObj=(Star) Proxy.newProxyInstance(  
         //类加载器，因为代理对象是通过类加载器加载的，所以这里需要传入原始对象的类加载器  
-              Test.class.getClassLoader(),  
+            Test.class.getClassLoader(),  
         //接口，因为代理对象必须实现Star接口，所以这里需要传入Star接口的Class对象  
-                new Class[]{Star.class},  
+            new Class[]{Star.class},  
         //调用处理器，通过代理对象调用方法时会对通用处理器的invoke方法进行调用  
-                new InvocationHandler(){  
-                @Override  
-               public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {  
+            new InvocationHandler(){  
+            @Override  
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {  
                 //PROXY:代理对象,method:原始对象的方法,args:原始对象的方法的参数  
-                        System.out.println("准备场地");  
+            System.out.println("准备场地");  
                 //调用原始对象的方法  
             //INVOKE:调用原始对象的方法,与上面的invoke方法中的method参数对应,yangMi:原始对象  
-                        Object result=method.invoke(yangMi,args);  
-                        System.out.println("收拾场地");  
-                        return result;  
+             Object result=method.invoke(yangMi,args);  
+             System.out.println("收拾场地");  
+             return result;  
                     }  
                 });  
         //调用代理对象的方法  
         proxyObj.sing();  
         String dan  = proxyObj.dance();  
         System.out.println(dan);  
+    }  
+}
+
+public class YangMi implements Star{  
+    @Override  
+    public void sing() {  
+        System.out.println("YangMi.sing");  
+    }  
+    @Override  
+    public String dance() {  
+        System.out.println("YangMi.dance");  
+        return "YangMi.dance";  
     }  
 }
 ```
