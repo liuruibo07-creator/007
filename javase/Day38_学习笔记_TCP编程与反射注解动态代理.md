@@ -528,7 +528,7 @@ public class Test {
              System.out.println("收拾场地");  
              return result;  
                     }  
-                });  
+    });  
         //调用代理对象的方法  
         proxyObj.sing();  
         String dan  = proxyObj.dance();  
