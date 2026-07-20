@@ -162,7 +162,53 @@ public static void main(String[] args) throws Exception {
 ### 5. 使用线程池改造
 
 不再每次手动创建新线程，而是使用 `ThreadPoolExecutor` 线程池来管理连接线程，避免频繁创建/销毁线程的开销。
+```java
+public static void main(String[] args) throws Exception {  
+    System.out.println("===服务端启动===");  
+    //创建出一个线程池,负责处理通信管道的任务  
+    ThreadPoolExecutor threadPoolExecutor=new ThreadPoolExecutor(  
+            10,  
+            15,  
+            0L,  
+            TimeUnit.SECONDS,  
+            new LinkedBlockingQueue<>());  
+    //1.创建ServerSocket的对象，同时为服务端注册端口。  
+    ServerSocket serverSocket = new ServerSocket(8080);  
+    while (true) {  
+        //2.使用serverSocket对象，调用一个accept方法，等待客户端的连接请求  
+        Socket socket = serverSocket.accept();  
+        //3.把这个客户端对应的socket通信管道，交给一个独立的线程负责处理。  
+        threadPoolExecutor.execute(new ServerRunnable(socket));  
+    }  
+}
 
+public class ServerRunnable implements Runnable {  
+    private Socket socket;  
+  
+    public ServerRunnable(Socket socket) {  
+        this.socket = socket;  
+    }  
+  
+    @Override  
+    public void run() {  
+        try {  
+            OutputStream os = socket.getOutputStream();  
+            PrintStream ps = new PrintStream(os);  
+            // 响应行     "HTTP/1.1 200 OK"            
+            ps.println("HTTP/1.1 200 OK");  
+            //响应头     "Content-Type:text/html;charset=UTF-8"                                 ps.println("Content-Type:text/html;charset=UTF-8");  
+            // 响应空行  
+            ps.println();  
+            //响应体  
+            ps.println("<div style='color:red;font-size:120px;text-align:center'>HelloWorld<div>");  
+            //关闭socket  
+            socket.close();  
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        }  
+    }  
+}
+```
 ### 6. 群聊功能实现思路
 
 1. 服务端添加一个集合容器，用来存储所有在线客户端
