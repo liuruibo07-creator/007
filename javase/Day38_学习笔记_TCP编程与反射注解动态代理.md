@@ -109,7 +109,52 @@ public static void main(String[] args) throws Exception {
 - **解决方案：采用多线程**
   - 主线程：负责监听连接（`accept`）
   - 子线程：负责与具体客户端进行通信
+```java
+public static void main(String[] args) throws Exception {  
+    //1.创建客户端Socket对象,指定服务器端ip和端口  
+    Socket socket=new Socket("127.0.0.1",10010);  
+    //2.从socket对象中获取字节输出流,用来给服务端发送数据  
+    OutputStream os=socket.getOutputStream();  
+    DataOutputStream dos=new DataOutputStream(os);  
+    Scanner scanner=new Scanner(System.in);  
+    while (true) {  
+        System.out.println("请输入要发送的消息：");  
+        String msg=scanner.next();  
+        if("exit".equals(msg)) {  
+            socket.close();  
+            break;  
+        }  
+        //3.写数据  
+        dos.writeUTF(msg);  
+    }
 
+public class MyThread extends Thread{  
+    private Socket socket;  
+    public MyThread(Socket socket) {  
+        this.socket = socket;  
+    }  
+    @Override  
+    public void run() {  
+        try {  
+            InputStream is = socket.getInputStream();  
+            DataInputStream dis = new DataInputStream(is);  
+            while (true) {  
+                try {  
+                    String msg = dis.readUTF();  
+                    System.out.println(msg);  
+                } catch (IOException e) {  
+            SocketAddress remoteSocketAddress = socket.getRemoteSocketAddress();  
+                    System.out.println(remoteSocketAddress + "下线了");  
+                    break;  
+                }  
+            }  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }  
+    }  
+}
+
+```
 ### 4. BS 架构通信
 
 HTTP 协议响应报文格式：
