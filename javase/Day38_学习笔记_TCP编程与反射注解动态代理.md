@@ -118,7 +118,33 @@ HTTP 协议响应报文格式：
 响应空行
 响应体
 ```
-
+```java
+public class ServerRunnable implements Runnable {  
+    private Socket socket;  
+  
+    public ServerRunnable(Socket socket) {  
+        this.socket = socket;  
+    }  
+  
+    @Override  
+    public void run() {  
+        try {  
+            OutputStream os = socket.getOutputStream();  
+            PrintStream ps = new PrintStream(os); 
+            //响应行 
+            ps.println("HTTP/1.1 200 OK");  
+            //响应头
+            ps.println("Content-Type:text/html;charset=UTF-8");  
+            //响应空行
+            ps.println();  
+            //响应体
+            ps.println("<div style='color:red;font-size:120px;text-align:center'>HelloWorld<div>");  
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        }  
+    }
+```
+```
 ### 5. 使用线程池改造
 
 不再每次手动创建新线程，而是使用 `ThreadPoolExecutor` 线程池来管理连接线程，避免频繁创建/销毁线程的开销。
