@@ -286,6 +286,18 @@ public class ServerRunnable implements Runnable {
 > 反射就像一面**镜子**：能在程序**运行的过程中**，动态获取类的成员并使用。
 
 反射所抽象出的四个核心对象：
+```java
+//方式一 类名.class属性  
+Class<Cat> c1 = Cat.class;  
+//方式二 Class.forName(全类名)  
+Class<?> c2 = Class.forName("com.scedu.code.d1_reflect.Cat");  
+//方式三 对象名.getClass()  
+Cat cat = new Cat();  
+Class<? extends Cat> c3 = cat.getClass();  
+//验证字节码对象只有一份  
+System.out.println(c1==c2);  
+System.out.println(c1==c3);
+```
 
 | 抽象对象 | 对应类 |
 |---|---|
@@ -293,7 +305,36 @@ public class ServerRunnable implements Runnable {
 | 构造方法 | `Constructor` |
 | 成员方法 | `Method` |
 | 成员变量 | `Field` |
+```java
+public void testUseConstructor() throws Exception {  
+    Class<Cat> clas=Cat.class;  
+    Constructor<?> constructor=clas.getDeclaredConstructor( String.class,int.class);  
+    constructor.setAccessible(true);  
+    Object obj=constructor.newInstance("Tom",10);  
+    System.out.println(obj);  
+    System.out.println("-------------------");  
+    //获取单个私有构造方法  
+    Constructor<?> constructor1=clas.getDeclaredConstructor(String.class,int.class);  
+    //私有化构造方法需要暴力反射  
+    constructor1.setAccessible(true);  
+    Object obj1=constructor1.newInstance("Tom", 1);  
+    System.out.println(obj1);  
+}
 
+public void testUseField() throws Exception {  
+    Class<?> clas=Class.forName("com.scedu.code.d1_reflect.Cat");  
+    //获取单个公共成员变量  
+    Field field=clas.getField("name");  
+    //获取单个私有成员变量  
+    Field field1=clas.getDeclaredField("age");  
+    //暴力反射  
+    field1.setAccessible(true);  
+    Cat cat=new Cat();  
+    field.set(cat,"tom");  
+  
+}
+
+```
 ### 2. 反射学什么？
 
 - 如何获取成员
