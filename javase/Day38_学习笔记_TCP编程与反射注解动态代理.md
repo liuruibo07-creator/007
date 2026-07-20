@@ -396,8 +396,13 @@ public void testUseMethod() throws Exception {
 1. 属性如果没有默认值，必须赋值
 2. 如果只有一个属性需要赋值，且属性名为 `value`，可以省略 `value=`
 3. 如果属性类型是数组，需加 `{}`；`{}` 中如果只有一个值，可以省略 `{}`
-```
-
+```java
+public @interface Myanno {  
+    public String name() default "tom";  
+    public int value();  
+    public String[] names();  
+}
+@Myanno(name = "tom",  value=10, names = {"aaa", "bbb"})
 ```
 ### 3. 元注解（修饰注解的注解）
 
