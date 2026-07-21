@@ -470,6 +470,19 @@ public class AnnotationTest4 {
         }  
   
     }
+    
+    
+    public void parseMethod() throws Exception {  
+    Class<BookStore> cls=BookStore.class;  
+    //获取BookStore类中的mtehod1方法  
+    Method method=cls.getMethod("mtehod1");  
+    if(method.isAnnotationPresent(Book.class)){  
+        Book book=method.getDeclaredAnnotation(Book.class);  
+        System.out.println(book.value());  
+        System.out.println(Arrays.toString(book.authors()));  
+        System.out.println(book.price());  
+    }  
+}
 ```
 ---
 
