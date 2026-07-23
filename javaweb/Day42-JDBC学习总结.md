@@ -300,14 +300,14 @@ try (
 
 ## 六、知识点速查
 
-| 对象 | 核心职责 | 常用方法 |
-|---|---|---|
-| `DriverManager` | 管理驱动、创建连接 | `getConnection()` |
-| `Connection` | 表示数据库连接、控制事务 | `createStatement()`、`prepareStatement()`、`commit()`、`rollback()` |
-| `Statement` | 执行普通 SQL | `executeUpdate(sql)`、`executeQuery(sql)` |
-| `PreparedStatement` | 执行预编译 SQL、绑定参数 | `setXXX()`、`executeUpdate()`、`executeQuery()` |
-| `ResultSet` | 封装并读取查询结果 | `next()`、`getXXX()` |
-| `DataSource` | 管理数据库连接池 | `getConnection()` |
+| 对象                  | 核心职责           | 常用方法                                                             |
+| ------------------- | -------------- | ---------------------------------------------------------------- |
+| `DriverManager`     | 管理驱动、创建连接      | `getConnection()`                                                |
+| `Connection`        | 表示数据库连接、控制事务   | `createStatement()`、`prepareStatement()`、`commit()`、`rollback()` |
+| `Statement`         | 执行普通 SQL       | `executeUpdate(sql)`、`executeQuery(sql)`                         |
+| `PreparedStatement` | 执行预编译 SQL、绑定参数 | `setXXX()`、`executeUpdate()`、`executeQuery()`                    |
+| `ResultSet`         | 封装并读取查询结果      | `next()`、`getXXX()`                                              |
+| `DataSource`        | 管理数据库连接池       | `getConnection()`                                                |
 
 ---
 
