@@ -300,7 +300,7 @@ mvn clean package
 | `jar` | 默认方式，常用于普通 Java 项目 |
 | `war` | 常用于传统 Web 项目 |
 | `pom` | 常用于父工程或聚合工程 |
-
+![](assets/Maven(day44)学习总结/file-20260729195157341.png)
 ### 3. 触发构建阶段
 
 - 在 IDEA 的 Maven 面板中进行图形化操作。
