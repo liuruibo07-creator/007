@@ -189,18 +189,20 @@ File → Settings → Build, Execution, Deployment
 1. 检查 Maven、`settings.xml`、本地仓库和镜像配置。
 2. 删除本地仓库中的 `.lastUpdated` 文件。
 3. 重新刷新 Maven 项目并下载依赖。
+![](assets/Maven(day44)学习总结/file-20260729194645578.png)
+![](assets/Maven(day44)学习总结/file-20260729194547704.png)
 
 ### 3. 依赖范围（scope）
 
 通过 `<scope>` 标签设置依赖的使用范围：
 
-| scope 值 | 主程序 | 测试程序 | 参与打包/运行 | 示例 |
-|---|:---:|:---:|:---:|---|
-| `compile`（默认） | ✅ | ✅ | ✅ | log4j |
-| `test` | ❌ | ✅ | ❌ | junit |
-| `provided` | ✅ | ✅ | ❌ | servlet-api |
-| `runtime` | ❌ | ✅ | ✅ | JDBC 驱动 |
-| `import` | — | — | — | 用于引入 `dependencyManagement`，通常配合 BOM 使用 |
+| scope 值       | 主程序 | 测试程序 | 参与打包/运行 | 示例                                      |
+| ------------- | :-: | :--: | :-----: | --------------------------------------- |
+| `compile`（默认） |  ✅  |  ✅   |    ✅    | log4j                                   |
+| `test`        |  ❌  |  ✅   |    ❌    | junit                                   |
+| `provided`    |  ✅  |  ✅   |    ❌    | servlet-api                             |
+| `runtime`     |  ❌  |  ✅   |    ✅    | JDBC 驱动                                 |
+| `import`      |  —  |  —   |    —    | 用于引入 `dependencyManagement`，通常配合 BOM 使用 |
 
 ### 4. 依赖传递
 
