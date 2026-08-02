@@ -40,7 +40,7 @@ Servlet 读取 Request，处理业务，写入 Response
       ↓
 Tomcat 将响应返回浏览器
 ```
-
+![](assets/reqest%20and%20response(day46)/file-20260802124517198.png)
 ---
 
 ## 二、Request：获取请求报文
