@@ -115,7 +115,17 @@ while ((line = reader.readLine()) != null) {
 适合读取图片、文件等二进制数据：
 
 ```java
-ServletInputStream inputStream = request.getInputStream();
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
+    //操作3: 获取请求体数据  
+   //通过字节流获取  
+    ServletInputStream inputStream = request.getInputStream();  
+    byte[] bytes = new byte[1024];  
+    int len;  
+    while ((len = inputStream.read(bytes)) != -1) {  
+        System.out.println(new String(bytes, 0, len));  
+    }  
+  
+}
 ```
 
 | 方法 | 流类型 | 常见用途 |
