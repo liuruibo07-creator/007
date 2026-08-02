@@ -63,7 +63,7 @@ http://localhost:8080/web-demo/user?id=10
 | 上下文路径    | `getContextPath()` | `/web-demo`                           |
 | 完整请求 URL | `getRequestURL()`  | `http://localhost:8080/web-demo/user` |
 | 请求 URI   | `getRequestURI()`  | `/web-demo/user`                      |
-| 查询字符串    | `getQueryString()` | `id=10`                               |
+| 获取请求参数   | `getQueryString()` | `id=10`                               |
 
 示例：
 
