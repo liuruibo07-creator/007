@@ -248,6 +248,7 @@ String username = request.getParameter("username");
 
 ## 六、Response：设置响应报文
 
+![](assets/reqest%20and%20response(day46)/file-20260802133237976.png)
 ### 1. 设置响应状态码
 
 ```java
