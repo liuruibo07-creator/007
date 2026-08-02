@@ -57,13 +57,13 @@ http://localhost:8080/web-demo/user?id=10
 
 常用方法如下：
 
-| 目标       | 方法                 | 示例结果                                  |
-| -------- | ------------------ | ------------------------------------- |
-| 请求方式     | `getMethod()`      | `GET`                                 |
-| 上下文路径    | `getContextPath()` | `/web-demo`                           |
-| 完整请求 URL | `getRequestURL()`  | `http://localhost:8080/web-demo/user` |
-| 请求 URI   | `getRequestURI()`  | `/web-demo/user`                      |
-| 获取请求参数   | `getQueryString()` | `id=10`                               |
+| 目标               | 方法                 | 示例结果                                  |
+| ---------------- | ------------------ | ------------------------------------- |
+| 请求方式             | `getMethod()`      | `GET`                                 |
+| 上下文路径            | `getContextPath()` | `/web-demo`                           |
+| 完整请求 URL         | `getRequestURL()`  | `http://localhost:8080/web-demo/user` |
+| 请求 URI           | `getRequestURI()`  | `/web-demo/user`                      |
+| 获取？后面的ji'NJU请求参数 | `getQueryString()` | `id=10`                               |
 
 示例：
 
