@@ -291,6 +291,7 @@ writer.write("Hello Servlet");
 
 ```java
 ServletOutputStream outputStream = response.getOutputStream();
+outputStream.write("hello world".getBytes());
 ```
 
 | 方法 | 流类型 | 常见用途 |
