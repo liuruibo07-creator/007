@@ -345,8 +345,8 @@ response.addCookie(cookie);
 写入前编码：
 
 ```java
-String value = URLEncoder.encode("手机号码", StandardCharsets.UTF_8);
-Cookie cookie = new Cookie("keyword", value);
+String value = URLEncoder.encode("手机号码", UTF_8);
+Cookie cookie = new Cookie("phone", value);
 response.addCookie(cookie);
 ```
 
