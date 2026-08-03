@@ -60,7 +60,12 @@ response.setContentType("application/json;charset=UTF-8");
 response.getWriter().write(json);
 ```
 ```java
-json转为
+//json转为java对象
+Student student2=objectMapper.readValue(json,Student.class);  
+System.out.println(student2);
+//将json转换为集合  ，匿名内部类
+List<Student> list1= objectMapper.readValue(json2,new TypeReference<List<Student>>(){});  
+System.out.println(list1);
 
 ```
 ### 3. 响应字节数据
@@ -69,6 +74,8 @@ json转为
 
 ```java
 response.setContentType("image/jpeg");
+//设置这个后
+response.setHeader("content-disposition","attachment;filename=ccf200a6755a7e565672a6b41d7f2c43.jpg");
 
 try (InputStream in = getServletContext()
         .getResourceAsStream("/images/1.jpg");
