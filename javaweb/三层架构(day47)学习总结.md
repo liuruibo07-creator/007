@@ -44,7 +44,6 @@ response.getWriter().write("操作成功");
 
 ```java
 response.setContentType("application/json;charset=UTF-8");
-response.getWriter().write(json);
 ```
 
 Java 对象通常先通过 Jackson 等工具转换成 JSON 字符串，再写入响应体。
@@ -60,7 +59,10 @@ String json = mapper.writeValueAsString(student);
 response.setContentType("application/json;charset=UTF-8");
 response.getWriter().write(json);
 ```
+```java
+json转为
 
+```
 ### 3. 响应字节数据
 
 图片、音频、文件等二进制数据应通过字节输出流返回：
