@@ -77,21 +77,7 @@ response.setContentType("image/jpeg");
 //设置这个后
 response.setHeader("content-disposition","attachment;filename=ccf200a6755a7e565672a6b41d7f2c43.jpg");
 
-try (InputStream in = getServletContext()
-        .getResourceAsStream("/images/1.jpg");
-     ServletOutputStream out = response.getOutputStream()) {
 
-    if (in == null) {
-        response.sendError(HttpServletResponse.SC_NOT_FOUND);
-        return;
-    }
-
-    byte[] buffer = new byte[8192];
-    int length;
-    while ((length = in.read(buffer)) != -1) {
-        out.write(buffer, 0, length);
-    }
-}
 ```
 
 ### 4. 文件下载
@@ -104,6 +90,18 @@ response.setHeader(
         "Content-Disposition",
         "attachment; filename=1.jpg"
 );
+//1.读取本地图片  
+FileInputStream fis=new FileInputStream("C:\\Users\\liuru\\Desktop\\ccf200a6755a7e565672a6b41d7f2c43.jpg");  
+//2.获取响应输出流  
+ServletOutputStream outputStream=response.getOutputStream();  
+//3.读取图片写入到响应输出流  
+/*byte[] bytes=new byte[1024];  
+int len=0;  
+while((len=fis.read(bytes))!=-1){  
+    outputStream.write(bytes,0,len);}  
+fis.close();*/  
+//4.简化代码  
+IOUtils.copy(fis,outputStream);
 ```
 
 | 响应内容 | Content-Type 示例 | 输出方式 |
