@@ -68,6 +68,12 @@ List<Student> list1= objectMapper.readValue(json2,new TypeReference<List<Student
 System.out.println(list1);
 
 ```
+
+| 方法                               | 转换方向                   |
+| -------------------------------- | ---------------------- |
+| `writeValueAsString(object)`     | Java 对象 → JSON 字符串     |
+| `readValue(json, Xxx.class)`     | JSON 字符串 → 单个 Java 对象  |
+| `readValue(json, TypeReference)` | JSON 字符串 → 带泛型的集合或复杂对象 |
 ### 3. 响应字节数据
 
 图片、音频、文件等二进制数据应通过字节输出流返回：
@@ -80,12 +86,11 @@ response.setHeader("content-disposition","attachment;filename=ccf200a6755a7e5656
 
 ```
 
-### 4. 文件下载
-
 设置 `Content-Disposition` 可以提示浏览器以附件形式下载：
 
 ```java
 response.setContentType("image/jpeg");
+//加这个，在浏览器只下载，不打开
 response.setHeader(
         "Content-Disposition",
         "attachment; filename=1.jpg"
@@ -140,55 +145,14 @@ ObjectMapper mapper = new ObjectMapper();
 
 `ObjectMapper` 是 Jackson 最常用的核心对象。
 
-### 3. Java 对象转 JSON
 
-使用 `writeValueAsString()`：
 
-```java
-Student student = new Student(1, "张三");
-String json = mapper.writeValueAsString(student);
-```
+### 3. 常用方法总结
 
-结果示例：
-
-```json
-{
-  "id": 1,
-  "name": "张三"
-}
-```
-
-### 4. JSON 转单个对象
-
-使用 `readValue()` 并指定目标类型：
-
-```java
-String json = "{\"id\":1,\"name\":\"张三\"}";
-Student student = mapper.readValue(json, Student.class);
-```
-
-### 5. JSON 数组转集合
-
-集合含有泛型信息，应使用 `TypeReference`：
-
-```java
-String json = "["
-        + "{\"id\":1,\"name\":\"张三\"},"
-        + "{\"id\":2,\"name\":\"李四\"}"
-        + "]";
-
-List<Student> students = mapper.readValue(
-        json,
-        new TypeReference<ArrayList<Student>>() {}
-);
-```
-
-### 6. 常用方法总结
-
-| 方法 | 转换方向 |
-|---|---|
-| `writeValueAsString(object)` | Java 对象 → JSON 字符串 |
-| `readValue(json, Xxx.class)` | JSON 字符串 → 单个 Java 对象 |
+| 方法                               | 转换方向                   |
+| -------------------------------- | ---------------------- |
+| `writeValueAsString(object)`     | Java 对象 → JSON 字符串     |
+| `readValue(json, Xxx.class)`     | JSON 字符串 → 单个 Java 对象  |
 | `readValue(json, TypeReference)` | JSON 字符串 → 带泛型的集合或复杂对象 |
 
 ---
