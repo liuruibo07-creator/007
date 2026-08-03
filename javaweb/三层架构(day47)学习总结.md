@@ -299,6 +299,7 @@ Set-Cookie: username=zhangsan
 ```
 
 浏览器再次访问符合条件的资源时，通过请求头自动携带：
+==获取cookie,本质上就是获取请求头 cooki==
 
 ```http
 Cookie: username=zhangsan
