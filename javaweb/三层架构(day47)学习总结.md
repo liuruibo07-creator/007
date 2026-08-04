@@ -93,7 +93,7 @@ response.setContentType("image/jpeg");
 //加这个，在浏览器只下载，不打开
 response.setHeader(
         "Content-Disposition",
-        "attachment; filename=1.jpg"
+        "attachment; filename=ccf200a6755a7e565672a6b41d7f2c43.jpg"
 );
 //1.读取本地图片  
 FileInputStream fis=new FileInputStream("C:\\Users\\liuru\\Desktop\\ccf200a6755a7e565672a6b41d7f2c43.jpg");  
