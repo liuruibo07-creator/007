@@ -358,18 +358,22 @@ public interface UserMapper {
 ```java
 @Test
 void selectAll() throws IOException {
-    String resource = "mybatis-config.xml";
+    //1.加载配置文件,从classpath下加载  
+String resource = "mybatis-config.xml";  
+InputStream inputStream = Resources.getResourceAsStream(resource);  
+//2.创建SqlSessionFactory对象  
+SqlSessionFactory sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);  
+//3.通过工厂生产SqlSession对象  
+SqlSession sqlSession=sqlSessionFactory.openSession();  
+//4.通过sqlSession创建代理对象  
+UserMapper mapper = sqlSession.getMapper(UserMapper.class);  
+//5.执行方法  
+List<User> users = mapper.selectAll();  
+System.out.println(users);  
+//6.关闭资源  
+sqlSession.close();
 
-    try (InputStream inputStream =
-                 Resources.getResourceAsStream(resource);
-         SqlSession sqlSession = new SqlSessionFactoryBuilder()
-                 .build(inputStream)
-                 .openSession()) {
-
-        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        List<User> users = mapper.selectAll();
-        users.forEach(System.out::println);
-    }
+    
 }
 ```
 
