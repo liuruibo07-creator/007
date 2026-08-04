@@ -56,7 +56,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 
 import java.io.IOException;
-
+//*为拦截所有url
 @WebFilter("/*")
 public class EncodingFilter implements Filter {
 
