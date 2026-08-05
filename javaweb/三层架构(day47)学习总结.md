@@ -479,32 +479,168 @@ Session 保存真实的用户会话数据
 
 ---
 
-## 八、Filter 与 Listener
+## 八、Filter 
 
 导图中还列出了 Java Web 的另外两个重要组件：
 
-### 1. Filter（过滤器）
+### 1. Filter 的作用
 
-在请求到达目标资源前或响应返回客户端前进行统一处理，常用于：
+Filter 可以拦截进入 Web 应用的请求和返回客户端的响应，适合抽取多个资源共同需要的功能。
 
-- 登录校验。
-- 字符编码处理。
+常见应用场景：
+
+- 登录与权限校验。
+- 请求字符编码处理。
 - 日志记录。
-- 权限控制。
+- 敏感词过滤。
+- 响应数据统一处理。
 
-### 2. Listener（监听器）
+```text
+客户端
+  ↓ 请求
+Filter
+  ↓
+Servlet / 目标资源
+  ↓ 响应
+Filter
+  ↓
+客户端
+```
 
-监听 Web 应用、Session 或 Request 等对象的创建、销毁及属性变化，常用于：
+### 2. 定义 Filter
 
-- 应用启动时初始化资源。
-- 统计在线人数。
-- 监听 Session 生命周期。
+1. 定义类并实现 `Filter` 接口。
+2. 重写 `doFilter()` 方法。
+3. 使用 `@WebFilter` 配置拦截路径。
+4. 调用 `chain.doFilter()` 放行请求。
 
-> 本节导图只列出了 Filter 和 Listener 名称，详细使用方法可在后续课程中继续学习。
+```java
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
+
+import java.io.IOException;
+//*为拦截所有url
+@WebFilter("/*")
+public class EncodingFilter implements Filter {
+
+    @Override
+    public void doFilter(
+            ServletRequest request,
+            ServletResponse response,
+            FilterChain chain
+    ) throws IOException, ServletException {
+
+        // 放行前：处理请求
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+
+        // 放行，进入下一个过滤器或目标资源
+        chain.doFilter(request, response);
+
+        // 放行后：处理响应
+    }
+}
+```
+
+> 若没有调用 `chain.doFilter(request, response)`，请求将被当前过滤器拦截，不会继续访问目标资源。
+
+### 3. 过滤器链
+
+同一个请求匹配多个 Filter 时，这些 Filter 会组成过滤器链。
+
+假设执行顺序为 `Filter1 → Filter2 → Servlet`：
+
+```text
+Filter1 放行前代码
+    ↓
+Filter2 放行前代码
+    ↓
+Servlet 的 doGet()/doPost()
+    ↓
+Filter2 放行后代码
+    ↓
+Filter1 放行后代码
+```
+
+执行结构类似方法嵌套：
+
+```text
+Filter1 {
+    Filter2 {
+        Servlet
+    }
+}
+```
+
+### 4. 多个 Filter 的顺序
+
+使用注解配置时，部分 Servlet 容器会按过滤器类名的自然顺序组织过滤器链，例如字符编码顺序通常表现为：
+
+```text
+0-9 → A-Z → a-z
+```
+
+其常见起始编码值为：
+
+| 字符范围 | 起始编码值 |
+|---|:---:|
+| `0-9` | 48 |
+| `A-Z` | 65 |
+| `a-z` | 97 |
+
+> 注解 Filter 的顺序不应作为跨容器的可靠业务规则。若业务严格依赖过滤器顺序，应使用项目框架提供的顺序机制，或采用可明确控制顺序的配置方式。
+
+
+## 九、Listener 监听器
+
+Listener 用于监听 Web 应用中对象的创建、销毁或属性变化。
+
+本节重点是 `ServletContextListener`。
+
+### 1. ServletContext
+
+`ServletContext` 表示整个 Web 应用：
+
+- 一个 Web 应用通常只有一个 `ServletContext` 对象。
+- 应用启动时创建。
+- 应用关闭时销毁。
+- 可用于读取应用资源、获取上下文信息或保存应用级共享数据。
+
+### 2. 定义 ServletContextListener
+
+```java
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
+
+@WebListener
+public class ApplicationListener
+        implements ServletContextListener {
+
+    @Override
+    public void contextInitialized(ServletContextEvent event) {
+        // Web 应用启动时执行
+        System.out.println("应用已启动");
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent event) {
+        // Web 应用正常关闭时执行
+        System.out.println("应用已关闭");
+    }
+}
+```
+
+| 方法 | 执行时机 |
+|---|---|
+| `contextInitialized()` | Web 应用初始化完成时 |
+| `contextDestroyed()` | Web 应用销毁时 |
+
+常见用途：应用启动时加载配置、初始化资源，应用关闭时释放资源。
 
 ---
 
-## 九、重点速记
+## 十、重点速记
 
 > [!TIP]
 > **Response 负责返回数据；三层架构负责拆分职责；Cookie 和 Session 负责跨请求识别用户、共享会话数据。**
