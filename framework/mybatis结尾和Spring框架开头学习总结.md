@@ -403,7 +403,7 @@ BookService bookService =
 ```
 
 - 使用 Bean 名称定位。
-- 返回类型为 `Object`，需要强制转换。
+- 返回类型为 `Object`，需要强制转换。（不推荐）
 
 ### 3. 根据名称和类型获取
 
