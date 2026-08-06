@@ -254,7 +254,7 @@ List<Brand> result = page.getResult();
 
 ### 2. 狭义 Spring
 
-狭义上的 Spring 指 **Spring Framework**，它是 Spring 生态中最基础的项目，为其他项目提供 IoC、AOP、事务管理等核心能力。
+狭义上的 Spring 指 **Spring Framework**，它是 Spring 生态中最基础的项目（所有子项目的基础·），为其他项目提供 IoC、AOP、事务管理等核心能力。
 
 ![659](assets/mybatis结尾和Spring框架开头学习总结/file-20260806194910353.png)
 
