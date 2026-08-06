@@ -221,7 +221,10 @@ PageInfo<Brand> pageInfo = new PageInfo<>(list);
 如果实际结果对象是 `Page`，也可以直接获取：
 
 ```java
-
+// 定义方法时也要区分
+@Select("select * from tb_brand")  
+Page<Brand> selectByPage2();
+//
 Page<Brand> page = (Page<Brand>) brandMapper.selectAll();
 long total = page.getTotal();
 List<Brand> result = page.getResult();
