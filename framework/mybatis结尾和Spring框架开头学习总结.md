@@ -189,10 +189,20 @@ PageInfo<Brand> pageInfo = new PageInfo<>(brands);
 完整结构：
 
 ```java
-public PageInfo<Brand> selectPage(int pageNum, int pageSize) {
-    PageHelper.startPage(pageNum, pageSize);
-    List<Brand> brands = brandMapper.selectAll();
-    return new PageInfo<>(brands);
+void selectByPage() {  
+    int page=2;  
+    int pageSizae=2;  
+    PageHelper.startPage(page,pageSizae);  
+    // 此时 PageHelper 已经帮我们封装了分页的参数，所以我们只需要调用 selectList() 方法查询数据即可  
+    List<Brand> brands = brandMapper.selectByPage();  
+    System.out.println(brands);  
+    //获取分页信息,PageInfo是PageHelper的工具类  
+    PageInfo<Brand> pageInfo=new PageInfo<>(brands);  
+    System.out.println(pageInfo.getTotal());  
+    System.out.println(pageInfo.getPages());  
+    System.out.println(pageInfo.getPageNum());  
+    System.out.println(pageInfo.getPageSize());  
+  
 }
 ```
 
