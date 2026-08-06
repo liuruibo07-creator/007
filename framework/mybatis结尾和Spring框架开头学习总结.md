@@ -359,7 +359,7 @@ public class SpringConfig {
 
 `ApplicationContext` 是 Spring IoC 容器的核心接口。
 
-### 2. XML 配置容器
+### 2. XML 配置容器（已经不用）
 
 `ClassPathXmlApplicationContext` 根据类路径中的 XML 配置创建容器：
 
