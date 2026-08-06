@@ -424,7 +424,18 @@ BookService bookService = context.getBean(
 | `getBean(Type.class)` | 否 | 简洁，但同类型多 Bean 时冲突 |
 | `getBean("name")` | 是 | 按名称精确获取 |
 | `getBean("name", Type.class)` | 否 | 同时校验名称和类型，较明确 |
-
+```java
+ApplicationContext ioc=new AnnotationConfigApplicationContext(SpringConfig.class);  
+// 3. 获取Bean对象  
+//BookService bookService=ioc.getBean(BookService.class);  
+//根据对象名称获取  
+BookService bookService2=( BookService )ioc.getBean("bookServiceImpl2");  
+//根据名称和类型获取  
+BookService bookService=ioc.getBean( "bookServiceImpl2",BookService.class);  
+System.out.println (bookService);  
+bookService.save();  
+BookDao bookDao=ioc.getBean(BookDao.class);
+```
 ---
 
 ## 八、依赖注入
