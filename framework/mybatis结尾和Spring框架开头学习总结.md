@@ -467,12 +467,12 @@ public class BookServiceImpl implements BookService {
 private BookDao bookDao;
 ```
 
-更推荐构造器注入：
+更推荐构造器注入,但现在先在直接引用变量那注册：
 
 ```java
 @Service
 public class BookServiceImpl implements BookService {
-
+    
     private final BookDao bookDao;
 
     public BookServiceImpl(
