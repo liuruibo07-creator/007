@@ -368,13 +368,13 @@ ApplicationContext context =
         new ClassPathXmlApplicationContext("applicationContext.xml");
 ```
 
-### 3. 注解配置容器
+### 3. 注解类配置容器
 
 `AnnotationConfigApplicationContext` 根据 Java 配置类创建容器：
 
 ```java
 ApplicationContext context =
-        new AnnotationConfigApplicationContext(SpringConfig.class);
+    new AnnotationConfigApplicationContext(SpringConfig.class);
 ```
 
 | 实现类 | 配置来源 |
