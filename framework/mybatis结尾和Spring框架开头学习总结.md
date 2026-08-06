@@ -138,9 +138,9 @@ PageHelper 是 MyBatis 分页插件，可拦截查询并根据数据库方言生
 返回当前页数据和分页信息
 ```
 
-### 2. 引入依赖
+### 2. 引入依赖和注册插件
 
-导图中的版本示例：
+依赖
 
 ```xml
 <dependency>
@@ -150,9 +150,7 @@ PageHelper 是 MyBatis 分页插件，可拦截查询并根据数据库方言生
 </dependency>
 ```
 
-### 3. 注册插件
-
-在 `mybatis-config.xml` 中添加：
+插件，在 `mybatis-config.xml` 中添加：
 
 ```xml
 <plugins>
