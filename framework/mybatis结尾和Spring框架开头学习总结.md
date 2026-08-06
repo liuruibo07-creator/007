@@ -476,7 +476,7 @@ private BookDao bookDao;
 
 构造器注入便于创建不可变依赖，也更方便测试。
 
-### 2. `@Resource`
+### 2. `@Resource`（不能用在构造方法上）
 
 `@Resource` 属于 Jakarta 注解规范，通常优先按名称匹配，也可以通过 `name` 明确指定：
 
