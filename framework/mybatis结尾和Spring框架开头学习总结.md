@@ -471,16 +471,7 @@ private BookDao bookDao;
 
 ```java
 @Service
-public class BookServiceImpl implements BookService {
-    
-    private final BookDao bookDao;
 
-    public BookServiceImpl(
-            @Qualifier("bookDaoMysql") BookDao bookDao
-    ) {
-        this.bookDao = bookDao;
-    }
-}
 ```
 
 构造器注入便于创建不可变依赖，也更方便测试。
