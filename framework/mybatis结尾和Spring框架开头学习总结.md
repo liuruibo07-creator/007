@@ -64,7 +64,8 @@ MyBatis 使用 `<association>` 封装对一关系，常见实现方式有两种�
     </association>
 </resultMap>  
 <select id="selectWthOrderById" resultMap="orderItemVoMap">  
-    select i.id,i.goods_name,i.goods_price,i.count,i.order_id,o.id as   orderid,o.payment,o.payment_type,o.status from  
+    select i.id,i.goods_name,i.goods_price,i.count,i.order_id,o.id as   
+    orderid,o.payment,o.payment_type,o.status from  
    tb_order_item i inner join tb_order o on i.order_id=o.id where i.id=#{id}</select>
 
 ```
@@ -81,24 +82,7 @@ MyBatis 使用 `<association>` 封装对一关系，常见实现方式有两种�
 先查询订单项，再使用订单外键调用另一条 SQL 查询订单。
 
 ```xml
-<resultMap id="orderItemVoMap2" type="OrderItemVo">
-    <id column="id" property="id"/>
-    <result column="goods_name" property="goodsName"/>
-    <result column="goods_price" property="goodsPrice"/>
-    <result column="count" property="count"/>
-    <result column="order_id" property="orderId"/>
 
-    <association
-        property="order"
-        select="com.edu.mapper.OrderMapper.selectById"
-        column="order_id"/>
-</resultMap>
-
-<select id="selectWithOrderById2" resultMap="orderItemVoMap2">
-    select id, goods_name, goods_price, count, order_id
-    from tb_order_item
-    where id = #{id}
-</select>
 ```
 
 订单查询：
