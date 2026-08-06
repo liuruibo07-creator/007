@@ -457,7 +457,7 @@ public class BookServiceImpl implements BookService {
 
 1. 按类型查找候选 Bean。
 2. 若只有一个候选项，直接注入。
-3. 若存在多个候选项，需要通过名称、`@Qualifier`、`@Primary` 等进一步确定。
+3. 若存在多个候选项，需要通过名称、`@Qualifier`
 
 结合 `@Qualifier` 指定 Bean 名称：
 
