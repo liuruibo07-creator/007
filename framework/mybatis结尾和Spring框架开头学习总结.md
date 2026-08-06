@@ -57,35 +57,16 @@ MyBatis 使用 `<association>` 封装对一关系，常见实现方式有两种�
 通过联表查询一次获得订单项及所属订单，再使用 `<association>` 映射关联对象。
 
 ```xml
-<resultMap id="orderItemVoMap" type="OrderItemVo">
-    <id column="item_id" property="id"/>
-    <result column="goods_name" property="goodsName"/>
-    <result column="goods_price" property="goodsPrice"/>
-    <result column="item_count" property="count"/>
-    <result column="item_order_id" property="orderId"/>
-
-    <association property="order" javaType="Order">
-        <id column="order_id" property="id"/>
-        <result column="payment" property="payment"/>
-        <result column="payment_type" property="paymentType"/>
-        <result column="order_status" property="status"/>
+<resultMap id="orderItemVoMap" type="com.edu.vo.OrderItemVo">  
+    <id property="id" column="id"/>  
+    <association property="order" javaType="com.edu.entity.Order">  
+        <id property="id" column="orderid"/>  
     </association>
-</resultMap>
+</resultMap>  
+<select id="selectWthOrderById" resultMap="orderItemVoMap">  
+    select i.id,i.goods_name,i.goods_price,i.count,i.order_id,o.id as   orderid,o.payment,o.payment_type,o.status from  
+   tb_order_item i inner join tb_order o on i.order_id=o.id where i.id=#{id}</select>
 
-<select id="selectWithOrderById" resultMap="orderItemVoMap">
-    select i.id         as itemid,
-           i.goods_name,
-           i.goods_price,
-           i.count      as item_count,
-           i.order_id   as item_order_id,
-           o.id         as order_id,
-           o.payment,
-           o.payment_type,
-           o.status     as order_status
-    from tb_order_item i
-    inner join tb_order o on i.order_id = o.id
-    where i.id = #{id}
-</select>
 ```
 
 `<association>` 的关键属性：
