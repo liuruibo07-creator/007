@@ -161,8 +161,8 @@ PageHelper 是 MyBatis 分页插件，可拦截查询并根据数据库方言生
 ```
 
 > `<plugins>` 在 MyBatis 核心配置中有固定位置，应按照配置文件规定的标签顺序放置。
-
-### 4. Mapper 方法
+![460](assets/mybatis结尾和Spring框架开头学习总结/file-20260806193427518.png)
+### 3. Mapper 方法
 
 Mapper 方法本身通常不需要添加分页参数：
 
@@ -176,7 +176,7 @@ List<Brand> selectAll();
 </select>
 ```
 
-### 5. 使用 PageHelper
+### 4. 使用 PageHelper
 
 必须紧接着执行需要分页的查询：
 
