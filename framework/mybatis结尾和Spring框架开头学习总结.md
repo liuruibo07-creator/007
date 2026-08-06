@@ -129,6 +129,7 @@ MyBatis 使用 `<association>` 封装对一关系，常见实现方式有两种�
 ### 1. PageHelper 的作用
 
 ==PageHelper 是 MyBatis 分页插件，可拦截查询并根据数据库方言生成分页 SQL，从而屏蔽部分数据库分页语法差异。
+屏蔽底层数据库的差异,插件可以根据不同的数据库帮我们写不同分页sql语句
 
 ```text
 普通查询 SQL
