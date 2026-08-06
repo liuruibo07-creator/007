@@ -29,7 +29,7 @@
 
 ```text
 OrderItemVo（订单项） ─────> Order（订单）
-               多         一
+               多            一
 ```
 
 VO 示例：
@@ -73,7 +73,7 @@ MyBatis 使用 `<association>` 封装对一关系，常见实现方式有两种�
 </resultMap>
 
 <select id="selectWithOrderById" resultMap="orderItemVoMap">
-    select i.id         as item_id,
+    select i.id         as itemid,
            i.goods_name,
            i.goods_price,
            i.count      as item_count,
