@@ -307,7 +307,7 @@ XML：
 Mapper 接口：
 
 ```java
-int insertBatch(@Param("brands") List<Brand> brands);
+void insertBatch(@Param("brands") List<Brand> brands);
 ```
 
 XML：
