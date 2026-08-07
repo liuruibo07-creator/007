@@ -531,6 +531,9 @@ public class SpringConfig {
 
 ### 2. 使用 `@Value` 注入
 
+![](assets/mybatis结尾和Spring框架开头学习总结/file-20260806203242086.png)
+```
+
 `@Value` 可注入字符串、基本类型及其包装类型等简单值：
 
 ```java
