@@ -170,22 +170,27 @@ public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) {
 @Configuration
 public class MyBatisConfig {
 
-    @Bean
-    public SqlSessionFactoryBean sqlSessionFactory(
-            DataSource dataSource
-    ) {
-        SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
-        factory.setDataSource(dataSource);
-        factory.setTypeAliasesPackage("com.edu.entity");
-        return factory;
-    }
+    @Bean  
+public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) throws Exception {  
+    SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();  
+    // 设置数据源,对应xml文件中的environment  
+    sqlSessionFactoryBean.setDataSource(dataSource);  
+    // 设置类型别名  
+    sqlSessionFactoryBean.setTypeAliasesPackage("com.edu.entity");  
+    // 设置对应xml文件中的Settings  
+    Configuration configuration = new Configuration();  
+    configuration.setLogImpl(StdOutImpl.class);  
+    configuration.setMapUnderscoreToCamelCase(true);  
+    sqlSessionFactoryBean.setConfiguration(configuration);  
+    return sqlSessionFactoryBean;  
+}
 
-    @Bean
-    public MapperScannerConfigurer mapperScannerConfigurer() {
-        MapperScannerConfigurer scanner = new MapperScannerConfigurer();
-        scanner.setBasePackage("com.edu.mapper");
-        return scanner;
-    }
+    public MapperScannerConfigurer mapperScannerConfigurer(){  
+    //MapperScannerConfigurer 是Mybatis提供的扫描mapper接口的工具类  
+    MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();  
+    mapperScannerConfigurer.setBasePackage("com.edu.mapper");  
+    return mapperScannerConfigurer;  
+}
 }
 ```
 
