@@ -213,22 +213,20 @@ public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) throws
 @ComponentScan("com.edu")
 ```
 
-### 4. Service 中使用 Mapper
+### 4. 实现步骤
 
 ```java
-@Service
-public class UserServiceImpl implements UserService {
-
-    private final UserMapper userMapper;
-
-    public UserServiceImpl(UserMapper userMapper) {
-        this.userMapper = userMapper;
-    }
-
-    @Override
-    public List<User> selectAll() {
-        return userMapper.selectAll();
-    }
+qlSessionFactoryBean会同时会将getObject方法的返回值也一并放入容器 (SqlSessionFactory放入到容器中)
+MapperScannerConfigurer会根据我们设置的包路径，自动扫描所有接口，将接口实现类对象(代理对象)注册到IOC容器中
+@Test  
+public void test1() throws SQLException {  
+    ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);  
+    SqlSessionFactory sqlSessionFactory=context.getBean(SqlSessionFactory.class);  
+    System.out.println(sqlSessionFactory);  
+    StudentMapper studentMappper =context.getBean(StudentMapper.class);  
+    List<Student> students=studentMappper.selectAll();  
+    System.out.println(students);  
+  
 }
 ```
 
