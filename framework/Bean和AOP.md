@@ -202,10 +202,15 @@ public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) throws
 ### 3. 导入配置
 
 ```java
-@Configuration
+// mybatisconfig
+@org.springframework.context.annotation.Configuration  
+@Import(JdbcConfig.class)
+// jdbcconfig
+@Configuration  
+@PropertySource("classpath:jdbc.properties")
+//spring config
+@Configuration  
 @ComponentScan("com.edu")
-@Import({DataSourceConfig.class, MyBatisConfig.class})
-public class SpringConfig {}
 ```
 
 ### 4. Service 中使用 Mapper
