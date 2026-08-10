@@ -613,18 +613,6 @@ public String search(String name, Integer age) {
 </build>
 ```
 
-更明确的写法是使用 `@RequestParam`：
-
-```java
-@GetMapping("/search")
-@ResponseBody
-public String search(
-        @RequestParam("name") String username,
-        @RequestParam(defaultValue = "1") Integer page
-) {
-    return username + ":" + page;
-}
-```
 
 ### 2. JSON 参数
 
