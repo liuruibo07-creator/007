@@ -438,7 +438,7 @@ public class SpringMvcConfig {
 }
 ```
 
-### 5. Web 应用初始化类
+### 5. 定义Web应用的配置类
 
 使用 Java 配置替代 `web.xml`：
 
