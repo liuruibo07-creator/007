@@ -319,7 +319,6 @@ public class LogAspect {
 | `@EnableAspectJAutoProxy` | 开启注解 AOP 代理 |
 
 ---
-
 ## 八、切入点表达式
 
 ### 1. execution 语法
