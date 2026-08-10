@@ -98,11 +98,10 @@ public Object around(ProceedingJoinPoint pjp) throws Throwable {
 
 #### 返回通知
 
-`returning` 属性值必须与通知方法中的形参名一致：
+`returning` ==属性值==必须与通知方法中的==形参名==一致：
 
 ```java
-@AfterReturning(
-        pointcut = "servicePointcut()",
+@AfterReturning(pointcut = "servicePointcut()",
         returning = "result"
 )
 public void afterReturning(JoinPoint joinPoint, Object result) {
@@ -123,7 +122,6 @@ public Object around(ProceedingJoinPoint pjp) throws Throwable {
         return pjp.proceed();
     } catch (Throwable throwable) {
         System.out.println("异常：" + throwable.getMessage());
-        throw throwable;
     }
 }
 ```
