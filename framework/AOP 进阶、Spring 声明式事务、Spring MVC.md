@@ -218,28 +218,26 @@ CGLIB 代理类（子类）
 
 ### 2. 注册事务管理器
 
-```java
-@Configuration
-public class TransactionConfig {
 
-    @Bean
-    public PlatformTransactionManager transactionManager(
-            DataSource dataSource
-    ) {
-        return new DataSourceTransactionManager(dataSource);
-    }
+`PlatformTransactionManager` 是 Spring 事务管理器的统一接口；使用 JDBC/MyBatis 时常用 `DataSourceTransactionManager`。
+```java
+@Bean  
+public PlatformTransactionManager transactionManager(DataSource dataSource){  
+    //DataSourceTransactionManager是Spring提供的数据源事务管理器,也是PlatformTransactionManager接口的实现类  
+    DataSourceTransactionManager pstm=new DataSourceTransactionManager();  
+    pstm.setDataSource(dataSource);  
+    return pstm;  
 }
 ```
 
-`PlatformTransactionManager` 是 Spring 事务管理器的统一接口；使用 JDBC/MyBatis 时常用 `DataSourceTransactionManager`。
 
 ### 3. 开启声明式事务
-
 ```java
 @Configuration
 @EnableTransactionManagement
 public class SpringConfig {
 }
+
 ```
 
 ### 4. 添加 `@Transactional`
@@ -261,6 +259,8 @@ public class AccountServiceImpl implements AccountService {
         accountMapper.increase(targetId, amount);
     }
 }
+```
+
 ```
 
 执行过程：
