@@ -381,7 +381,7 @@ DispatcherServlet
 
 ## 七、Spring MVC 入门程序
 
-### 1. 创建 Maven Web 项目
+### 1. 创建 Maven Web 项目和集成TomCat本地服务器
 
 项目打包方式通常为：
 
