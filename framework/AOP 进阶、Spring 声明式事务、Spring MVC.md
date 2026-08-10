@@ -133,7 +133,7 @@ public Object around(ProceedingJoinPoint pjp) throws Throwable {
 `throwing` 属性值必须与通知方法中的形参名一致：
 
 ```java
-@AfterThrowing(pointcut = "servicePointcut()",
+@AfterThrowing(value = "pt()",
         throwing = "exception"
 )
 public void afterThrowing(
