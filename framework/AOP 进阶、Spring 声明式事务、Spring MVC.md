@@ -447,10 +447,9 @@ public class WebAppInitConfig
         extends AbstractDispatcherServletInitializer {
 
     @Override
-    protected WebApplicationContext
-    createServletApplicationContext() {
+    protected WebApplicationContext createServletApplicationContext() {
         AnnotationConfigWebApplicationContext context =
-                new AnnotationConfigWebApplicationContext();
+        new AnnotationConfigWebApplicationContext();
         context.register(SpringMvcConfig.class);
         return context;
     }
