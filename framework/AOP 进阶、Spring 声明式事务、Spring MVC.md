@@ -116,7 +116,7 @@ public void afterReturning(JoinPoint joinPoint, Object result) {
 #### 环绕通知
 
 ```java
-@Around("servicePointcut()")
+@Around("pt()")
 public Object around(ProceedingJoinPoint pjp) throws Throwable {
     try {
         return pjp.proceed();
