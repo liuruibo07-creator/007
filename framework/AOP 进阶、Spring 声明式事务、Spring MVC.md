@@ -54,7 +54,7 @@ Object target = joinPoint.getTarget();
 环绕通知使用 `ProceedingJoinPoint`，它是 `JoinPoint` 的子接口：
 
 ```java
-@Around("servicePointcut()")
+@Around("pt()")
 public Object around(ProceedingJoinPoint pjp) throws Throwable {
     Object[] args = pjp.getArgs();
     System.out.println("参数：" + Arrays.toString(args));
@@ -86,7 +86,7 @@ return pjp.proceed(newArgs);
 `proceed()` 的返回结果就是目标方法返回值：
 
 ```java
-@Around("servicePointcut()")
+@Around("pt()")
 public Object around(ProceedingJoinPoint pjp) throws Throwable {
     Object result = pjp.proceed();
     System.out.println("返回值：" + result);
@@ -101,7 +101,7 @@ public Object around(ProceedingJoinPoint pjp) throws Throwable {
 `returning` ==属性值==必须与通知方法中的==形参名==一致：
 
 ```java
-@AfterReturning(pointcut = "servicePointcut()",
+@AfterReturning(value = "pt()",
         returning = "result"
 )
 public void afterReturning(JoinPoint joinPoint, Object result) {
