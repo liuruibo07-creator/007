@@ -375,6 +375,8 @@ public Object recordTime(ProceedingJoinPoint joinPoint)
 
 > `joinPoint.proceed()` 用于执行原始目标方法；遗漏它会导致目标方法不执行。
 
+
+![](assets/Bean和AOP/file-20260810103451115.png)
 ---
 
 ## 十、重点速记
