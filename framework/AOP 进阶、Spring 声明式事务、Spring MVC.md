@@ -319,7 +319,26 @@ public void save() throws Exception {
 |---|---|---|
 | `REQUIRED` | 加入外层事务 | 创建新事务 |
 | `REQUIRES_NEW` | 挂起外层并创建新事务 | 创建新事务 |
+```java
+@Transactional(propagation = Propagation.REQUIRED)  
+public void log(String from, String to, double money) {  
+    logMapper.log("转账操作由" + from + "到" + to + ",金额：" + money);  
+}
 
+@Transactional  
+public void transfer(String out, String in, double money) {  
+    try{  
+    accountMapper.outMoney(out, money);  
+    //模拟转账失败  
+    int i=1/0;  
+    accountMapper.inMoney(in, money);  
+    }  
+    finally {  
+        logService.log(out, in, money);  
+    }  
+}
+
+```
 > `REQUIRES_NEW` 常用于必须独立保存的操作，如审计记录，但仍需结合异常是否传播来判断外层事务最终结果。
 
 ### 3. 事务常见注意事项
