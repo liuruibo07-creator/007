@@ -33,7 +33,7 @@ Spring AOP 的五种通知都可以获取目标方法的实参。
 前置、后置、返回和异常通知使用 `JoinPoint`：
 
 ```java
-@Before("servicePointcut()")
+@Before("pt()")
 public void before(JoinPoint joinPoint) {
     Object[] args = joinPoint.getArgs();
     System.out.println(Arrays.toString(args));
