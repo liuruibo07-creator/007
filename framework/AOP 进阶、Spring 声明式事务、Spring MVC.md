@@ -246,18 +246,13 @@ public class SpringConfig {
 
 ```java
 @Service
-public class AccountServiceImpl implements AccountService {
-
-    @Transactional
-    @Override
-    public void transfer(
-            Integer sourceId,
-            Integer targetId,
-            BigDecimal amount
-    ) {
-        accountMapper.decrease(sourceId, amount);
-        accountMapper.increase(targetId, amount);
-    }
+@Resource  
+private AccountMapper accountMapper;  
+@Transactional  
+public void transfer(String from, String to, double money) {  
+    accountMapper.outMoney(from, money);  
+    int i=1/0;  
+    accountMapper.inMoney(to, money);  
 }
 ```
 
@@ -275,8 +270,9 @@ public class AccountServiceImpl implements AccountService {
 
 1. 引入 `spring-jdbc` 等依赖。
 2. 将 `PlatformTransactionManager` 注册到 IoC 容器。
-3. 在业务方法或业务类上添加 `@Transactional`。
-4. 使用 `@EnableTransactionManagement` 开启声明式事务。
+3. 使用 `@EnableTransactionManagement` 开启声明式事务。
+4. 在业务方法或业务类上添加 `@Transactional`。
+
 
 ---
 
