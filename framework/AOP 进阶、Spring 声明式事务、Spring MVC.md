@@ -443,17 +443,19 @@ public class SpringMvcConfig {
 使用 Java 配置替代 `web.xml`：
 
 ```java
+//相当于web.xml文件，由tomcat容器加载
 public class WebAppInitConfig
         extends AbstractDispatcherServletInitializer {
 
     @Override
+    //通过加载SpringMvcConfig类，创建SpringMVC容器
     protected WebApplicationContext createServletApplicationContext() {
         AnnotationConfigWebApplicationContext context =
         new AnnotationConfigWebApplicationContext();
         context.register(SpringMvcConfig.class);
         return context;
     }
-
+    //拦截所有请求，将请求分发给SpringMVC容器
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
