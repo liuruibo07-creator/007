@@ -70,9 +70,7 @@ GET /users/search?name=Tom&age=18
 
 ```java
 @GetMapping("/users/search")
-public String search(
-        @RequestParam("username") String name
-) {
+public String search(@RequestParam("username") String name) {
     return name;
 }
 ```
