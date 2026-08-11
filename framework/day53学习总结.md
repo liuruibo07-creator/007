@@ -282,6 +282,7 @@ public User selectById(
 
 使用 `@DateTimeFormat` 指定格式。
 
+==告诉 Spring MVC 在接收请求参数时，按 yyyy-MM-dd HH:mm:ss 这个格式把字符串解析成 LocalDateTime。==
 #### 添加在方法形参上
 
 ```java
