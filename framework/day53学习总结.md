@@ -195,8 +195,8 @@ Controller：
 
 ```java
 @PostMapping("/users")
-public User save(@RequestBody User user) {
-    return user;
+public String save(@RequestBody User user) {
+    return "success";
 }
 ```
 
