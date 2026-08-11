@@ -242,7 +242,9 @@ public List<User> saveBatch(
 
 ## 三、路径参数
 
-在请求映射路径中使用 `{变量名}` 定义路径变量：
+在请求映射路径中使用 `{变量名}` 定义路径变量
+
+==@pathVarible
 
 ```java
 @GetMapping("/users/{id}")
