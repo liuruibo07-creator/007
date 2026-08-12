@@ -468,6 +468,7 @@ public class UserController {
 - `@PutMapping`
 - `@DeleteMapping`
 
+![](assets/day53学习总结/file-20260812091342807.png)
 ---
 
 ## 七、SSM 整体架构
