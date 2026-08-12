@@ -149,28 +149,19 @@ Controller 调用过程发生异常
 Spring MVC 使用 `@RestControllerAdvice` 和 `@ExceptionHandler` 统一处理异常：
 
 ```java
-@RestControllerAdvice
-public class GlobalExceptionHandler {
-
-    @ExceptionHandler(BusinessException.class)
-    public ResponseEntity<Result<Void>> handleBusiness(
-            BusinessException exception
-    ) {
-        Result<Void> body = Result.error(
-                exception.getCode(),
-                exception.getMessage()
-        );
-        return ResponseEntity.badRequest().body(body);
-    }
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<Result<Void>> handleException(
-            Exception exception
-    ) {
-        // 服务器日志应记录完整异常，避免把堆栈暴露给客户端
-        Result<Void> body = Result.error(500, "服务器内部错误");
-        return ResponseEntity.internalServerError().body(body);
-    }
+package com.edu.exception;  
+import com.edu.common.Result;  
+import org.springframework.web.bind.annotation.ExceptionHandler;  
+import org.springframework.web.bind.annotation.RestControllerAdvice;  
+  
+@RestControllerAdvice  
+//@RestControllerAdvice可 替代@Controller和@ResponseBody  
+public class GlobalExcpetionHandler {  
+    @ExceptionHandler(Exception.class)  
+    public Result handleException(Exception e){  
+        e.printStackTrace();  
+        return Result.error("服务器异常"+e.getMessage());  
+    }  
 }
 ```
 
