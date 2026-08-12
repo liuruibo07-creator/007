@@ -370,9 +370,14 @@ Apifox 中选择：`Body → form-data`，并将字段类型设为 `file`。
 Spring MVC 通过 `MultipartResolver` 解析上传请求。基于 Servlet 标准时可注册：
 
 ```java
-@Bean
-public MultipartResolver multipartResolver() {
-    return new StandardServletMultipartResolver();
+@Configuration  
+@ComponentScan("com.edu")  
+@EnableWebMvc  
+public class SpringMvcConfig  {  
+    @Bean  
+   public StandardServletMultipartResolver multipartResolver(){  
+        return new StandardServletMultipartResolver();  
+    }  
 }
 ```
 
@@ -400,29 +405,24 @@ protected void customizeRegistration(
 ### 4. Controller 接收文件
 
 ```java
-@PostMapping("/upload")
-public Result<String> upload(
-        @RequestParam("file") MultipartFile file
-) throws IOException {
-    if (file.isEmpty()) {
-        return Result.error(400, "请选择文件");
-    }
-
-    String originalName = file.getOriginalFilename();
-    String extension = StringUtils.getFilenameExtension(originalName);
-    String storedName = UUID.randomUUID()
-            + (extension == null ? "" : "." + extension);
-
-    Path uploadDir = Paths.get("D:/uploads").toAbsolutePath().normalize();
-    Files.createDirectories(uploadDir);
-    Path target = uploadDir.resolve(storedName).normalize();
-
-    if (!target.startsWith(uploadDir)) {
-        return Result.error(400, "非法文件名");
-    }
-
-    file.transferTo(target);
-    return Result.success(storedName);
+@RestController  
+public class UploadController {  
+    @PostMapping("/upload")  
+    public String upload(MultipartFile file)throws Exception{  
+        //1.获取文件原始名称  
+        String orignalFilename=file.getOriginalFilename();  
+        System.out.println("文件原始名称："+orignalFilename);  
+        //2.获取文件扩展名  
+        String suffix=orignalFilename.substring(orignalFilename.lastIndexOf(".")); 
+        System.out.println("文件后缀名："+suffix);  
+        //3.使用uuid生成全局唯一的文件名称  
+        String newFilename= UUID.randomUUID().toString()+suffix;  
+        System.out.println("新文件名称："+newFilename);  
+        //4.转存  
+        file.transferTo(new File("D:\\upload\\"+newFilename));  
+        //5.返回成功信息  
+        return "success";  
+    }  
 }
 ```
 
