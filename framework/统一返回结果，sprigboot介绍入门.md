@@ -286,27 +286,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 ### 3. 注册拦截器
 
 ```java
-@Configuration
-@EnableWebMvc
-public class SpringMvcConfig implements WebMvcConfigurer {
 
-    private final LoginInterceptor loginInterceptor;
-
-    public SpringMvcConfig(LoginInterceptor loginInterceptor) {
-        this.loginInterceptor = loginInterceptor;
-    }
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/**")
-                .excludePathPatterns(
-                        "/login",
-                        "/static/**"
-                )
-                .order(1);
-    }
-}
 ```
 
 - `addPathPatterns()`：添加需要拦截的路径。
