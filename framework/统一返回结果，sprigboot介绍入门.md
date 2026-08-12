@@ -286,6 +286,21 @@ public class LoginInterceptor implements HandlerInterceptor {
 ### 3. 注册拦截器
 
 ```java
+@Configuration  
+@ComponentScan("com.edu")  
+@EnableWebMvc  
+public class SpringMvcConfig implements WebMvcConfigurer {  
+    @Autowired  
+    private MyInterceptor myInterceptor;  
+    @Override  
+    //注册拦截器，默认是所有进入springmvc的请求都会执行拦截器  
+    public void addInterceptors(InterceptorRegistry registry) {  
+        registry.addInterceptor(myInterceptor).addPathPatterns("/book/**")
+        //拦截/book路径下的所有请求  
+                .excludePathPatterns("/book/add");
+        //只排除/book路径下的/add请求,其他请求都会执行拦截器  
+    }  
+}
 
 ```
 
