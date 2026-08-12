@@ -190,7 +190,7 @@ public class GlobalExcpetionHandler {
 7. `HandlerAdapter` 将处理结果交回 `DispatcherServlet`。
 8. `DispatcherServlet` 调用 `ViewResolver`。
 9. 视图解析器根据逻辑视图名定位物理视图。
-10. 模型数据与视图渲染为 HTML。
+10. 模型数据与视图渲染为 HTML返回给`DispatcherServlet`。
 11. `DispatcherServlet` 将响应返回浏览器。
 
 ```text
