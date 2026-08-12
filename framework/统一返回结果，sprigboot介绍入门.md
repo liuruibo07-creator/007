@@ -345,7 +345,6 @@ pre1 → pre2(false) → 停止
 - 当前返回 `false` 的拦截器本身通常不会执行其 `afterCompletion()`。
 
 ---
-
 ## 六、文件上传
 
 ### 1. 客户端要求
