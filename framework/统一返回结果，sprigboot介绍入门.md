@@ -173,34 +173,20 @@ public class GlobalExcpetionHandler {
 
 `@ExceptionHandler(XxxException.class)` 指定该方法处理的异常类型。更具体的异常处理方法通常优先匹配。
 
-### 2. 业务异常
-
-```java
-@Getter
-public class BusinessException extends RuntimeException {
-    private final Integer code;
-
-    public BusinessException(Integer code, String message) {
-        super(message);
-        this.code = code;
-    }
-}
-```
-
-> 全局异常处理借鉴了横切关注点思想，将异常转换逻辑从 Controller 中抽离；它是 Spring MVC 的异常解析机制，不应简单等同于普通业务 AOP 切面。
 
 ---
 
 ## 三、Spring MVC 工作流程
 
 ### 1. 页面渲染流程
+![](assets/统一返回结果，sprigboot介绍入门/file-20260812193741504.png)
 
 1. 客户端请求进入前端控制器 `DispatcherServlet`。
 2. `DispatcherServlet` 请求 `HandlerMapping` 查找处理器。
 3. `HandlerMapping` 返回 Handler 和拦截器链。
-4. `DispatcherServlet` 选择合适的 `HandlerAdapter`。
+4. `DispatcherServlet` 调用 `HandlerAdapter`。
 5. `HandlerAdapter` 调用 Controller 方法。
-6. Controller 返回模型和视图信息。
+6. Controller 返回模型和视图（Module and View）信息。
 7. `HandlerAdapter` 将处理结果交回 `DispatcherServlet`。
 8. `DispatcherServlet` 调用 `ViewResolver`。
 9. 视图解析器根据逻辑视图名定位物理视图。
