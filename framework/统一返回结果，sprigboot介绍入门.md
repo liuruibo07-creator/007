@@ -42,48 +42,89 @@
 ### 2. Result 类
 
 ```java
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Result<T> {
-    private Integer code;
-    private String message;
-    private T data;
-
-    public static <T> Result<T> success(T data) {
-        return new Result<>(200, "操作成功", data);
-    }
-
-    public static Result<Void> success() {
-        return new Result<>(200, "操作成功", null);
-    }
-
-    public static Result<Void> error(
-            Integer code,
-            String message
-    ) {
-        return new Result<>(code, message, null);
-    }
+package com.edu.common;  
+  
+import lombok.Data;  
+  
+import java.io.Serializable;  
+  
+  
+//统一响应结果类  
+//Data 注解 可以自动生成getter和setter方法  
+@Data  
+public class Result<T> implements Serializable {  
+    private static final long serialVersionUID = 1L;  
+    //状态码比如规定1表示成功,0表示失败 可以自定义  
+    private Integer code;  
+    //成功或者失败的消息提示  
+    private String msg;  
+    //数据  
+    private T data;  
+    //成功响应,没有数据返回,通常用于增删改操作  
+    public static <T> Result<T> success() {  
+        Result<T> result = new Result<T>();  
+        result.code = 1;  
+        result.msg = "操作成功";  
+        return result;  
+    }  
+    //成功响应,有数据返回,通常用于查询操作  
+    public static <T> Result<T> success(T object) {  
+        Result<T> result = new Result<T>();  
+        result.data = object;  
+        result.code = 1;  
+        result.msg = "操作成功";  
+        return result;  
+    }  
+    //失败响应,返回错误原因  
+    public static <T> Result<T> error(String msg) {  
+        Result result = new Result();  
+        result.msg = msg;  
+        result.code = 0;  
+        return result;  
+    }  
 }
 ```
 
 ### 3. Controller 使用
 
 ```java
-@RestController
-@RequestMapping("/users")
-public class UserController {
-
-    @GetMapping("/{id}")
-    public Result<User> selectById(@PathVariable Integer id) {
-        return Result.success(userService.selectById(id));
-    }
-
-    @PostMapping
-    public Result<Void> save(@RequestBody User user) {
-        userService.save(user);
-        return Result.success();
-    }
+@RestController  
+@Controller  
+@RequestMapping("/book")  
+public class BookController {  
+    // 注入BookService  
+    @Resource  
+    private BookService bookService;  
+   /* @PostMapping  
+       public String saveBook(){        return "book";    }*/    @GetMapping  
+    public Result<List<Book>> findAll(){  
+       List<Book> books = bookService.selectAll();  
+       int i = 1/0;  
+       System.out.println(books);  
+       return Result.success(books);  
+    }  
+    //根据id查询图书  
+    //id:路径变量，需要用@PathVariable注解来接收  
+    @GetMapping("/{id}")  
+    public Result<Book> findById(@PathVariable Integer id){  
+        Book book = bookService.selectById(id);  
+        return Result.success(book);  
+    }  
+    @PostMapping  
+    public Result saveBook(@RequestBody Book book){  
+        int rows = bookService.insert(book);  
+        return Result.success(rows>0?"success":"fail");  
+    }  
+    @PutMapping  
+    public Result updateBook(@RequestBody Book book){  
+        int rows = bookService.update(book);  
+        return Result.success(rows>0?"success":"fail");  
+    }  
+    @DeleteMapping("/{id}")  
+    public Result deleteBook(@PathVariable Integer id){  
+        int rows = bookService.delete(id);  
+        return Result.success(rows>0?"success":"fail");  
+    }  
 }
 ```
 
