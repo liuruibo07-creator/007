@@ -277,11 +277,11 @@ public class LoginInterceptor implements HandlerInterceptor {
 }
 ```
 
-| 方法 | 执行时机 |
-|---|---|
-| `preHandle()` | Handler 执行前；返回值决定是否放行 |
-| `postHandle()` | Handler 正常执行后、视图渲染前 |
-| `afterCompletion()` | 请求处理完成后；已成功通过该拦截器时通常会执行 |
+| 方法                  | 执行时机                            |
+| ------------------- | ------------------------------- |
+| `preHandle()`       | Handler 执行前；返回值决定是否放行           |
+| `postHandle()`      | Handler 正常执行后、视图渲染前，preHandle正常 |
+| `afterCompletion()` | 请求处理完成后；已成功通过该拦截器时通常会执行         |
 
 ### 3. 注册拦截器
 
