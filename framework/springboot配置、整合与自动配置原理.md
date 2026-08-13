@@ -86,13 +86,9 @@ application-prod.yml   # 生产环境
 ```
 公共配置：
 ```yaml
-spring:
-  profiles:
+spring:  
+  profiles:  
     active: dev
-
-spring:
-  application:
-    name: user-service
 ```
 
 > 实际 YML 中不能重复定义同一顶层键，否则后一个键可能覆盖前一个。应合并书写：
