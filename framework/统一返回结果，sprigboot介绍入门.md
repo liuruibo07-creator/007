@@ -483,7 +483,7 @@ Spring Boot 根据类路径依赖、已有 Bean 和配置属性等条件，自�
 
 ---
 
- ## 八、Spring Boot 入门程序
+   ## 八、Spring Boot 入门程序
 
 ### 1. Maven 配置
 
