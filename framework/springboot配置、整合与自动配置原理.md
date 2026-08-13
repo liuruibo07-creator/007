@@ -570,21 +570,26 @@ Starter：把需要的依赖放到类路径
 ### 4. 自动配置示例
 
 ```java
-@AutoConfiguration
-@ConditionalOnClass(SomeClient.class)
-@ConditionalOnProperty(
-        prefix = "some.client",
-        name = "enabled",
-        havingValue = "true",
-        matchIfMissing = true
-)
-public class SomeClientAutoConfiguration {
-
-    @Bean
-    @ConditionalOnMissingBean
-    public SomeClient someClient() {
-        return new SomeClient();
-    }
+package com.example;  
+  
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;  
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;  
+import org.springframework.context.annotation.Bean;  
+import org.springframework.context.annotation.Configuration;  
+  
+@Configuration  
+public class HeaderConfig {  
+    @Bean  
+    @ConditionalOnProperty(name="age",havingValue="18")  
+    public HeaderParser headerParser() {  
+        return new HeaderParser();  
+    }  
+  
+    @Bean  
+    @ConditionalOnClass(HeaderConfig.class)  
+    public HeaderGenerator headerGenerator() {  
+        return new HeaderGenerator();  
+    }  
 }
 ```
 
