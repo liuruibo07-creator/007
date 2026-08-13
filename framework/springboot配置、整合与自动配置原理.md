@@ -4,18 +4,18 @@
 
 ## 目录
 
-- [一、YAML 多值配置](#一yaml-多值配置)
-- [二、Profiles 多环境配置](#二profiles-多环境配置)
-- [三、配置覆盖优先级](#三配置覆盖优先级)
-- [四、Spring Boot 整合 MyBatis](#四spring-boot-整合-mybatis)
-- [五、Spring Boot 整合 Druid](#五spring-boot-整合-druid)
-- [六、Spring Boot 整合 JUnit 5](#六spring-boot-整合-junit-5)
-- [七、Spring Boot 日志](#七spring-boot-日志)
-- [八、自定义与第三方 Bean 注册](#八自定义与第三方-bean-注册)
-- [九、ImportSelector 与 Enable 模式](#九importselector-与-enable-模式)
-- [十、Spring Boot 自动配置原理](#十spring-boot-自动配置原理)
-- [十一、条件装配注解](#十一条件装配注解)
-- [十二、重点速记](#十二重点速记)
+- [一、YAML 多值配置](springboot配置、整合与自动配置原理.md#一yaml-多值配置)
+- [二、Profiles 多环境配置](springboot配置、整合与自动配置原理.md#二profiles-多环境配置)
+- [三、配置覆盖优先级](springboot配置、整合与自动配置原理.md#三配置覆盖优先级)
+- [四、Spring Boot 整合 MyBatis](springboot配置、整合与自动配置原理.md#四spring-boot-整合-mybatis)
+- [五、Spring Boot 整合 Druid](springboot配置、整合与自动配置原理.md#五spring-boot-整合-druid)
+- [六、Spring Boot 整合 JUnit 5](springboot配置、整合与自动配置原理.md#六spring-boot-整合-junit-5)
+- [七、Spring Boot 日志](springboot配置、整合与自动配置原理.md#七spring-boot-日志)
+- [八、自定义与第三方 Bean 注册](springboot配置、整合与自动配置原理.md#八自定义与第三方-bean-注册)
+- [九、ImportSelector 与 Enable 模式](springboot配置、整合与自动配置原理.md#九importselector-与-enable-模式)
+- [十、Spring Boot 自动配置原理](springboot配置、整合与自动配置原理.md#十spring-boot-自动配置原理)
+- [十一、条件装配注解](springboot配置、整合与自动配置原理.md#十一条件装配注解)
+- [十二、重点速记](springboot配置、整合与自动配置原理.md#十二重点速记)
 
 ---
 
