@@ -79,7 +79,7 @@ public class Course {
 ### 1. 配置文件划分
 
 ```text
-application.yml        # 公共配置和环境激活
+application.yml        # 公共配置和环境激活（spring prfiles active）
 application-dev.yml    # 开发环境
 application-test.yml   # 测试环境
 application-prod.yml   # 生产环境
