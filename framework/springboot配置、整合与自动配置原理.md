@@ -42,24 +42,29 @@ spring:
 ```
 
 
-### 2. 使用配置类读取
+### 2. 使用类读取
 
 ```java
-@Data
-@Component
-@ConfigurationProperties(prefix = "app")
-public class AppProperties {
-    private List<String> servers;
-    private int[] ports;
-    private List<UserProperties> users;
+@Data  
+@AllArgsConstructor  
+@NoArgsConstructor  
+@Component  
+@ConfigurationProperties(prefix = "student")  
+public class StudentPro {  
+    private String name;  
+    private Integer age;  
+    private String[] hobbies;  
+    private List<Course> courses;  
 }
 ```
 
 ```java
-@Data
-public class UserProperties {
-    private String name;
-    private Integer age;
+@Data  
+@AllArgsConstructor  
+@NoArgsConstructor  
+public class Course {  
+   private String name;  
+   private Integer score;  
 }
 ```
 
