@@ -26,26 +26,21 @@ YAML 使用 `-` 定义列表，可绑定到数组、`List` 或 `Set` 等集合�
 ### 1. YAML 中定义列表
 
 ```yaml
-app:
-  servers:
-    - server-a
-    - server-b
-    - server-c
-  ports:
-    - 8080
-    - 8081
+student:  
+  name: zhangsan  
+  age: 18  
+  hobbies:  
+    - football  
+  courses:  
+    - name: math  
+      score: 90  
+    - name: english  
+      score: 85  
+spring:  
+  profiles:  
+    active: dev
 ```
 
-对象列表：
-
-```yaml
-app:
-  users:
-    - name: zhangsan
-      age: 18
-    - name: lisi
-      age: 20
-```
 
 ### 2. 使用配置类读取
 
