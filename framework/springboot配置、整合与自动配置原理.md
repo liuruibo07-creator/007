@@ -96,7 +96,7 @@ spring:
 ```yaml
 spring:
   application:
-    name: user-service
+    name: user-service//给当前应用取个名字
   profiles:
     active: dev
 ```
