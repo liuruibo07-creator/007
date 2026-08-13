@@ -183,7 +183,7 @@ java -Dserver.port=8888 -jar app.jar \
 此时命令行中的 `--server.port=9999` 优先级高于 JVM 系统属性中的 `-Dserver.port=8888`。
 
 > Spring Boot 的完整外部配置顺序还包含环境变量、Java 系统属性、JSON、测试属性等。实际排查覆盖问题时，可结合启动日志和 Actuator 的环境端点确认最终值。
-
+![](assets/springboot配置、整合与自动配置原理/file-20260813195618887.png)
 ---
 
 ## 四、Spring Boot 整合 MyBatis
