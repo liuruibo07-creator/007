@@ -68,6 +68,7 @@ public class Course {
 }
 ```
 
+> Spring Boot 按 YAML 里的 courses 列表，自动实例化成 Course 对象装进 List。
 > 多个相关配置优先使用 `@ConfigurationProperties` 批量绑定，比在各字段上重复使用 `@Value` 更清晰。
 
 ---
