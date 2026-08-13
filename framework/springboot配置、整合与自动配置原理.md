@@ -19,7 +19,7 @@
 
 ---
 
-## 一、YAML 多值配置
+## 一、YAML 多值配置(定义和读取yml文件多个值)
 
 YAML 使用 `-` 定义列表，可绑定到数组、`List` 或 `Set` 等集合类型。
 
@@ -76,7 +76,6 @@ public class Course {
 ## 二、Profiles 多环境配置
 
 不同运行环境通常拥有不同的数据库地址、端口和日志级别。Spring Boot Profiles 可拆分共性配置和环境专属配置。
-
 ### 1. 配置文件划分
 
 ```text
@@ -85,9 +84,7 @@ application-dev.yml    # 开发环境
 application-test.yml   # 测试环境
 application-prod.yml   # 生产环境
 ```
-
 公共配置：
-
 ```yaml
 spring:
   profiles:
@@ -98,7 +95,7 @@ spring:
     name: user-service
 ```
 
-> 实际 YAML 中不能重复定义同一顶层键，否则后一个键可能覆盖前一个。应合并书写：
+> 实际 YML 中不能重复定义同一顶层键，否则后一个键可能覆盖前一个。应合并书写：
 
 ```yaml
 spring:
