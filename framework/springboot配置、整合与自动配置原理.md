@@ -121,8 +121,14 @@ spring:
   datasource:
     url: jdbc:mysql://prod-db:3306/demo
 ```
+测试环境 application-test.yml
 
-### 2. 激活环境
+```yaml
+server:
+  port: 7777
+
+```
+### 2. 激活环境(codex自己补充的)
 
 配置文件激活：
 
