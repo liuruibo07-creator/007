@@ -111,7 +111,6 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/demo_dev
 ```
-
 生产环境 `application-prod.yml`：
 
 ```yaml
