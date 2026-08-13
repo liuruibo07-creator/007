@@ -340,7 +340,6 @@ class UserServiceTest {
 > 正确注解名是 `@SpringBootTest`。
 
 ---
-
 ## 七、Spring Boot 日志
 
 Spring Boot 默认使用 SLF4J 门面，常见默认实现是 Logback。
@@ -359,7 +358,6 @@ public class UserService {
 ```
 
 使用 `{}` 参数化日志可避免不必要的字符串拼接。
-
 ### 2. application.yml 配置
 
 ```yaml
