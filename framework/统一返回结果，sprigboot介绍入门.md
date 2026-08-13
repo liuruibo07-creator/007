@@ -561,7 +561,6 @@ Spring Boot 默认识别名称为 `application` 的配置文件，例如：
 ```text
 application.properties
 application.yml
-application.yaml
 ```
 
 ### 1. Properties 格式
