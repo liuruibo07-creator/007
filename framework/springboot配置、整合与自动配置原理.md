@@ -262,18 +262,19 @@ MyBatis SQL 日志会直接输出到标准输出，不再按 SLF4J 的级别、�
 
 ### 1. 默认数据源
 
-Spring Boot JDBC Starter 默认常使用 HikariCP，对应实现为 `HikariDataSource`。
+Spring Boot JDBC Starter 默认常使用 HikariCP，对应实现为 `HikariDataSource`。(可用Druid代替)
 
 ### 2. 引入 Druid Starter
 
 Spring Boot 3 项目可使用对应的 Druid Starter。导图中的版本示例：
 
 ```xml
-<dependency>
-    <groupId>com.alibaba</groupId>
-    <artifactId>druid-spring-boot-3-starter</artifactId>
-    <version>1.2.21</version>
-</dependency>
+<!--springboot3集成druid的起步依赖-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-3-starter</artifactId>
+            <version>1.2.21</version>
+        </dependency>
 ```
 
 > 具体版本需要与所用 Spring Boot、JDK 版本兼容。
