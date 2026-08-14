@@ -425,7 +425,15 @@ public class Application {
 
 ```java
 @SpringBootApplication
-@ComponentScan({"com.edu", "com.thirdparty"})
+//@ComponentScan(basePackages = {"com.edu","com.example"})  
+//@Import(HeaderParser.class)  
+@SpringBootApplication  
+@EnableHeaderConfig  
+public class QuickStartApplication {  
+    public static void main(String[] args) {  
+        SpringApplication.run(QuickStartApplication.class,args);  
+    }  
+}
 ```
 
 否则可能让应用自己的默认扫描范围丢失或发生变化。对于第三方配置，`@Import` 通常更明确。
