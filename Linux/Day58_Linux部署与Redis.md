@@ -143,7 +143,7 @@ chmod 755 bootStart.sh
 ```bash
 ./bootStart.sh
 ```
-### 3. 部署流程速记
+### 2.6. 部署流程速记
 
 ```text
 提交代码 → 服务器拉取代码 → Maven 打包 → 停止旧服务 → 后台启动新服务 → 查看日志
