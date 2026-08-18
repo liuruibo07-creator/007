@@ -143,13 +143,11 @@ chmod 755 bootStart.sh
 ```bash
 ./bootStart.sh
 ```
-
 ### 3. 部署流程速记
 
 ```text
 提交代码 → 服务器拉取代码 → Maven 打包 → 停止旧服务 → 后台启动新服务 → 查看日志
 ```
-
 ---
 
 ## 二、Redis 入门
@@ -157,7 +155,6 @@ chmod 755 bootStart.sh
 ### 1. Redis 概述
 
 Redis 是一种基于内存的键值型非关系型数据库（NoSQL）。
-
 ### 2. Redis 安装
 
 #### 2.1 Windows 安装
@@ -168,14 +165,12 @@ Redis 是一种基于内存的键值型非关系型数据库（NoSQL）。
 ```bash
 redis-server redis.windows.conf
 ```
-
 #### 2.2 Linux 安装
 
 - 可以采用源码安装，需要先编译再安装；
 - 源码通常建议放在 `/usr/local/src` 目录；
 - 默认可执行文件安装到 `/usr/local/bin`；
 - `/usr/local/bin` 通常已经加入 `PATH`，因此可以直接执行 Redis 命令。
-
 ### 3. Redis 客户端
 
 #### 3.1 命令行客户端
