@@ -232,7 +232,6 @@ ZCOUNT rank:game 80 100
 - **Jedis**：经典、直观的 Redis Java 客户端；
 - **Lettuce**：支持异步与响应式编程；
 - **Spring Data Redis**：对 Jedis、Lettuce 的 Spring 封装；Spring Boot 2 起默认使用 Lettuce。
-
 ### 1. Spring Boot 集成步骤
 
 1. 引入依赖：
