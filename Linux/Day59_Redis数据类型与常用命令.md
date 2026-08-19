@@ -276,7 +276,34 @@ public class RedisConfig {
         return redisTemplate;  
     }
     
-    
+    @Test  
+    void testString() {  
+    // 1. 存入 User 对象（会被序列化为 JSON）  
+    User user = new User("zhangsan", 20, "<EMAIL>", "beijing");  
+    redisTemplate.opsForValue().set("user:1", user);  
+  
+    // 2. 取出并强转为 User    User result = (User) redisTemplate.opsForValue().get("user:1");  
+    System.out.println(result);  
+  
+  
+    // 1. 存入字符串  
+    redisTemplate.opsForValue().set("name", "lisi");  
+  
+    // 2. 取出字符串  
+    String result1 = (String) redisTemplate.opsForValue().get("name");  
+    System.out.println(result1);  
+  
+    // 3. setIfAbsent：只有 key 不存在时才设置  
+    Boolean absent = redisTemplate.opsForValue().setIfAbsent("name", "lisi2");  
+    System.out.println("setIfAbsent 是否成功：" + absent);  
+  
+    // 4. 设置带过期时间的字符串  
+    redisTemplate.opsForValue().set("name", "lisi3", 10, TimeUnit.SECONDS);  
+  
+  
+    // 3. 设置过期时间  
+    redisTemplate.opsForValue().set("user:1", user, 10, TimeUnit.SECONDS);  
+}
     
 ```
 ### 方式二
