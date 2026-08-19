@@ -255,7 +255,28 @@ ZCOUNT rank:game 80 100
 
 ```java
 @Configuration
-
+public class RedisConfig {  
+    //自定义redisTemplate  
+    @Bean  
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {  
+        //第二种方式  
+        // StringRedisTemplate stringRedisTemplate=new StringRedisTemplate();  
+        //这就需要你自己手动转，使用objectMapper  
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();  
+        //设置连接池  
+        redisTemplate.setConnectionFactory(redisConnectionFactory);  
+        //设置key的序列化器  
+        redisTemplate.setKeySerializer(RedisSerializer.string());  
+        redisTemplate.setHashKeySerializer(RedisSerializer.string());  
+  
+        //设置value的序列化器  
+        redisTemplate.setValueSerializer(RedisSerializer.json());  
+        redisTemplate.setHashValueSerializer(RedisSerializer.json());  
+        //返回  
+        return redisTemplate;  
+    }
+    
+    
 ```
 ### 方式二
 如果希望 Redis 中只保存纯字符串形式的 JSON，而不保留 Java 对象类型信息，可以自行完成 JSON 序列化与反序列化，并使用 `StringRedisTemplate`。
