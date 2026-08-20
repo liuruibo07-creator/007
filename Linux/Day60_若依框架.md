@@ -132,7 +132,7 @@ npm run build:prod  # 打包生产环境
 ### 4.1 什么是 RBAC
 
 > [!abstract] RBAC 定义
-> **RBAC(Role-Based Access Control)** —— **基于角色的访问控制**。
+> **RBAC(Role-Based Access Control)** —— **基于角色的访问控制模块**。
 > 用户 → 角色 → 权限,三者解耦,权限不直接赋给用户,而是先赋给角色,再把角色赋给用户。
 
 ```mermaid
