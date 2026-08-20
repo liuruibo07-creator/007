@@ -525,15 +525,12 @@ request.interceptors.response.use(
 request.interceptors.request.use(function (config) {
 
     // 在发送请求之前做些什么
-
     const loginUser=JSON.parse(localStorage.getItem('loginUser'))
 
     if(loginUser&&loginUser.token){
-
         config.headers.token=loginUser.token
-
     } return config;
-
+    
 }
 
     , function (error) {
@@ -543,9 +540,6 @@ request.interceptors.request.use(function (config) {
     return Promise.reject(error);
 
   });
-
-  
-
 export default request
 ```
 
