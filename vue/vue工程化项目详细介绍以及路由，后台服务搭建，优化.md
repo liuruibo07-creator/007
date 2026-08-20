@@ -501,15 +501,50 @@ java -jar tlias.jar
 ```js
 import axios from 'axios'
 
+import router from '@/router'
+
 const request = axios.create({
-    baseURL: 'http://localhost:8080'   // 统一配置请求基础路径
+    baseURL: '/api',
+    timeout: 6000,
+
 })
 
-// 添加响应拦截器（统一处理响应数据）
 request.interceptors.response.use(
-    response => response.data,
-    error => Promise.reject(error)
+    (response) => {
+        return response.data
+    },
+    (error) => {
+        if(error.response.status===401){
+            router.push('/login')
+        }
+        return Promise.reject(error)
+    }
+
 )
+
+request.interceptors.request.use(function (config) {
+
+    // 在发送请求之前做些什么
+
+    const loginUser=JSON.parse(localStorage.getItem('loginUser'))
+
+    if(loginUser&&loginUser.token){
+
+        config.headers.token=loginUser.token
+
+    } return config;
+
+}
+
+    , function (error) {
+
+    // 对请求错误做些什么
+
+    return Promise.reject(error);
+
+  });
+
+  
 
 export default request
 ```
