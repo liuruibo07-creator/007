@@ -239,9 +239,9 @@ graph TD
 graph TD
     A[新建模块 ruoyi-xxx] --> B[引入 framework 模块]
     B --> C[父工程 pom.xml 锁定版本]
-    B --> C[父工程 pom.xml 锁定版本]
-    B --> C[父工程 pom.xml 锁定版本]
-    C --> D[控制器类调用startpage()方法]
+    C --> D[父工程 pom.xml 锁定版本]
+    D --> E[父工程 pom.xml 锁定版本]
+    F --> G[控制器类调用(BasetController)startpage()方法]
 ```
 ## 五、知识小结
 
