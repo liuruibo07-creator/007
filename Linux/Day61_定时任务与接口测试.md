@@ -235,7 +235,14 @@ graph TD
 ### 碎碎念
 ![](assets/Day61_定时任务与接口测试/file-20260822225304588.png)
 ---
-
+```mermaid
+graph TD
+    A[新建模块 ruoyi-xxx] --> B[引入 framework 模块]
+    B --> C[父工程 pom.xml 锁定版本]
+    B --> C[父工程 pom.xml 锁定版本]
+    B --> C[父工程 pom.xml 锁定版本]
+    C --> D[控制器类调用startpage()方法]
+```
 ## 五、知识小结
 
 | 模块 | 关键点 | 记忆关键字 |
