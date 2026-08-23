@@ -264,6 +264,7 @@ graph TD
 | 代码生成      | 单表 / 树表(`parent_id`)/ 主子表(1 对多)     | 三种模板        |
 | 接口测试      | Swagger 生成文档,Knife4j 增强,`/doc.html` | 4 个注解       |
 | 新建模块      | 建模块 → 锁版本 → admin 引入                | Maven 多模块三步 |
+|           |                                     |             |
 
 > [!question] 课后思考
 > 1. Spring Task 和 Quartz 分别适合什么场景?如果项目单机部署,选哪个更简单?
