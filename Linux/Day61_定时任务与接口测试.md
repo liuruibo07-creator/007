@@ -239,7 +239,7 @@ graph TD
 graph TD
     A[新建模块 ruoyi-xxx] --> B[引入 framework 模块]
     B --> C[TableSupport内部读取参数，创建PageDomain对象，并set进去]
-    C --> D[pageutils调用 TableSupport.buildPageRequest()获取pageDomain对象，获取分页参数，调用pagehelper.startpage()]
+    C --> D[pageutils调用 TableSupport.buildPageRequest方法获取pageDomain对象，获取分页参数，调用pagehelper.startpage()]
     D --> E[BaseController调用PageUtilts的startpage()方法]
     E --> F[控制器类调用(从BasetController)startpage()方法]
 ```
