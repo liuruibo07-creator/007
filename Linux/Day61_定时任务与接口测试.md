@@ -237,11 +237,13 @@ graph TD
 ---
 ```mermaid
 graph TD
-A[serveletrequest()] --> B[serveletutils.getParameter()]
-B --> C[TableSupport内部读取参数，创建PageDomain对象，并set进去]
-C --> D[pageutils调用 TableSupport.buildPageRequest方法获取pageDomain对象，获取分页参数，调用pagehelper.startpage()]
-D --> E[BaseController调用PageUtilts的startpage()方法]
-E --> F[控制器类调用(从BasetController)startpage()方法]
+    A["servletRequest() 接收 HTTP 请求"] --> B["ServletUtils.getParameter() 从请求读取分页参数"]
+    B --> C["TableSupport 内部读取参数，创建 PageDomain 对象并 set"]
+    C --> D["PageUtils 调用 TableSupport.buildPageRequest() 获取 PageDomain"]
+    D --> E["BaseController 调用 PageUtils.startPage()"]
+    E --> F["控制器类调用 BaseController.startPage()"]
+    D --> G["PageHelper.startPage() 设置 MyBatis 物理分页"]
+
 ```
 ## 五、知识小结
 
