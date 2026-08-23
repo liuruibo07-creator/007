@@ -239,8 +239,8 @@ graph TD
 graph TD
     A[新建模块 ruoyi-xxx] --> B[引入 framework 模块]
     B --> C[父工程 pom.xml 锁定版本]
-    C --> D[父工程 pom.xml 锁定版本]
-    D --> E[BaseController调用Page]
+    C --> D[]
+    D --> E[BaseController调用PageUtilts的startpage()方法]
     E --> F[控制器类调用(从BasetController)startpage()方法]
 ```
 ## 五、知识小结
