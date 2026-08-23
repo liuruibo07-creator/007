@@ -243,17 +243,26 @@ graph TD
     D --> E["BaseController 调用 PageUtils.startPage()"]
     E --> F["控制器类调用 BaseController.startPage()"]
     D --> G["PageHelper.startPage() 设置 MyBatis 物理分页"]
-
 ```
+```mermaid
+graph TD
+    A["servletRequest() 接收 HTTP 请求"] --> B["ServletUtils.getParameter() 从请求读取分页参数"]
+    B --> C["TableSupport 内部读取参数，创建 PageDomain 对象并 set"]
+    C --> D["PageUtils 调用 TableSupport.buildPageRequest() 获取 PageDomain"]
+    D --> E["BaseController 调用 PageUtils.startPage()"]
+    E --> F["控制器类调用 BaseController.startPage()"]
+    D --> G["PageHelper.startPage() 设置 MyBatis 物理分页"]
+```
+
 ## 五、知识小结
 
-| 模块 | 关键点 | 记忆关键字 |
-| :--- | :--- | :--- |
-| 定时任务 | Spring Task(单机/静态) vs Quartz(集群/动态) | 集群 + 规则存储位置 |
-| Quartz 配置 | 调用方法 `bean名.方法名()`、执行策略、是否并发 | 补偿机制三选一 |
-| 代码生成 | 单表 / 树表(`parent_id`)/ 主子表(1 对多) | 三种模板 |
-| 接口测试 | Swagger 生成文档,Knife4j 增强,`/doc.html` | 4 个注解 |
-| 新建模块 | 建模块 → 锁版本 → admin 引入 | Maven 多模块三步 |
+| 模块        | 关键点                                 | 记忆关键字       |
+| :-------- | :---------------------------------- | :---------- |
+| 定时任务      | Spring Task(单机/静态) vs Quartz(集群/动态) | 集群 + 规则存储位置 |
+| Quartz 配置 | 调用方法 `bean名.方法名()`、执行策略、是否并发        | 补偿机制三选一     |
+| 代码生成      | 单表 / 树表(`parent_id`)/ 主子表(1 对多)     | 三种模板        |
+| 接口测试      | Swagger 生成文档,Knife4j 增强,`/doc.html` | 4 个注解       |
+| 新建模块      | 建模块 → 锁版本 → admin 引入                | Maven 多模块三步 |
 
 > [!question] 课后思考
 > 1. Spring Task 和 Quartz 分别适合什么场景?如果项目单机部署,选哪个更简单?
