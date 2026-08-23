@@ -247,7 +247,7 @@ graph TD
 ```mermaid
 graph TD
     F["控制器类调用 BaseController.startPage()"] --> E["BaseController 调用 PageUtils.startPage()"]
-    E --> D["PageUtils 调用 TableSupport.buildPageRequest() 获取 PageDomain"]
+    E --> D["PageUtils 调用 TableSupport.buildPageRequest() 获取 PageDomain属性"]
     D --> C["TableSupport 内部读取参数，创建 PageDomain 对象并 set"]
     C --> B["ServletUtils.getParameter() 从请求读取分页参数"]
     B --> A["servletRequest() 接收 HTTP 请求"]
