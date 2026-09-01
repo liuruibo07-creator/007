@@ -240,6 +240,14 @@ queryWrapper.eq(
 
 ```java
 queryWrapper.select("id", "username", "age");
+
+
+public void test11() {  
+    QueryWrapper<User> queryWrapper=new QueryWrapper<>();  
+    queryWrapper.select("id","username");  
+    List<User> list=userMapper.selectList(queryWrapper);  
+    list.forEach(System.out::println);  
+}
 ```
 
 ### 5.6 常用条件运算符
