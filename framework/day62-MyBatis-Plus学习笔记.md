@@ -91,7 +91,17 @@ public interface UserMapper extends BaseMapper<User> {
 | 根据 ID 查询 | `T selectById(Serializable id)` | 按主键查询 |
 | 查询全部 | `List<T> selectList(null)` | 不设置条件时查询全部 |
 | 分页查询 | `IPage<T> selectPage(IPage<T> page, Wrapper<T> wrapper)` | 查询指定页数据 |
-
+```java
+void testSelectPage(){  
+    //当前页，每页显示记录数  
+    Page<User> page=new Page<>(3,2);  
+    usrMapper.selectPage(page,null);  
+    //总记录数  
+    System.out.println(page.getTotal());  
+    //当前页的数据集合  
+   page.getRecords().forEach(System.out::println);  
+}
+```
 批量删除可以使用：
 
 ```java
