@@ -201,6 +201,7 @@ npm run build
 | 启动     | 双击 `nginx.exe`                 |
 | 停止     | `nginx.exe -s stop` 或任务管理器结束进程 |
 | 重新加载配置 | `nginx.exe -s reload`          |
+|        |                                |
 
 **目录说明：**
 
