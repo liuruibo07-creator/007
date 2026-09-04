@@ -154,9 +154,9 @@ List<User> records = result.getRecords();
 
 Wrapper 用于以链式 API 构造 SQL 条件。
 
-| 类型 | 作用 |
-| --- | --- |
-| `QueryWrapper` | 生成查询或删除操作所需的 `WHERE` 条件 |
+| 类型              | 作用                             |
+| --------------- | ------------------------------ |
+| `QueryWrapper`  | 生成查询或删除操作所需的 `WHERE` 条件        |
 | `UpdateWrapper` | 生成更新操作所需的 `WHERE` 条件和 `SET` 语句 |
 
 ### 5.1 条件更新
