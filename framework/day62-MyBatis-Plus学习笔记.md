@@ -296,7 +296,10 @@ public class User {
 | --- | --- |
 | `AUTO` | 使用数据库自增策略 |
 | `ASSIGN_ID` | 默认使用雪花算法生成全局唯一 ID |
-
+```java
+@TableId(type= IdType.ASSIGN_ID)  
+private String username;
+```
 `ASSIGN_ID` 生成的 ID 使用 64 位二进制描述，转为十进制后通常是 19 位 `long` 类型数值，因此数据库字段一般使用 `BIGINT`。
 
 ---
