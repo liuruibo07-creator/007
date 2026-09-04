@@ -292,10 +292,10 @@ public class User {
 
 用于标记主键字段，`type` 属性用于设置主键生成策略。
 
-| `IdType` 策略 | 说明 |
-| --- | --- |
-| `AUTO` | 使用数据库自增策略 |
-| `ASSIGN_ID` | 默认使用雪花算法生成全局唯一 ID |
+| `IdType` 策略 | 说明                      |
+| ----------- | ----------------------- |
+| `AUTO`      | 使用数据库自增策略               |
+| `ASSIGN_ID` | 默认使用雪花算法生成全局唯一 ID,一般用这个 |
 ```java
 @TableId(type= IdType.ASSIGN_ID)  
 private String username;
