@@ -65,6 +65,11 @@ public class MybatisPlusConfig {
 UPDATE tb_user
 SET age = ?, version = version + 1
 WHERE id = ? AND version = oldVersion;
+
+ //查询  
+User user = userMapper.selectById(1L);  
+user.setAge(20);  
+userMapper.updateById(user);
 ```
 
 如果版本号不匹配，说明数据已被其他线程修改，本次更新不会命中记录。
