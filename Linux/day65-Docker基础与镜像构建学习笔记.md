@@ -324,9 +324,14 @@ docker run -d \
 
 ```bash
 docker run -d \
-  --name nginx \
-  -v /opt/nginx/html:/usr/share/nginx/html \
-  nginx:latest
+  --name mysql \
+  -p 3306:3306 \
+  -e TZ=Asia/Shanghai \
+  -e MYSQL_ROOT_PASSWORD=123 \
+  -v ./mysql/data:/var/lib/mysql \
+  -v ./mysql/conf:/etc/mysql/conf.d \
+  -v ./mysql/init:/docker-entrypoint-initdb.d \
+  mysql:8
 ```
 
 ### 7.1 如何区分数据卷和本地目录
@@ -390,7 +395,7 @@ docker build -t 镜像名称:镜像版本 Dockerfile所在目录
 例如：
 
 ```bash
-docker build -t myapp:1.0 .
+docker build -t demo:1.0 /root/demo
 ```
 
 - `-t myapp:1.0`：为镜像指定名称和标签；
