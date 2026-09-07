@@ -295,7 +295,7 @@ docker exec -it 容器名称 /bin/bash
 -v 数据卷名称:容器内目录
 ```
 ```
-docker run -d --name nginx -p 80:80
+docker run -d --name nginx -p 80:80 -v html:/usr/share/nginx/html nginx:latest
 ```
 示例：
 
