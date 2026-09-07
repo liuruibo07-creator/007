@@ -198,7 +198,8 @@ Docker 最常用的命令可以分为镜像操作和容器操作。
 | `docker save`   | 将镜像导出为归档文件         | `docker save -o app.tar app:1.0` |
 | `docker load`   | 从归档文件导入镜像          | `docker load -i app.tar`         |
 ```
-docker load -i
+docker save -o uuu.tar nginx:latest
+docker load -i  uuu.tar
 ```
 镜像导入导出流程：
 
@@ -221,7 +222,10 @@ docker load -i
 | `docker logs` | 查看容器日志 | `docker logs nginx` |
 | `docker logs -f` | 持续查看实时日志 | `docker logs -f nginx` |
 | `docker exec` | 在运行中的容器内执行命令 | `docker exec -it nginx /bin/bash` |
-
+```
+docker run -d --name nginx -p 80:80 nginx:latest
+docker exec -it nginx /bin/bash 
+```
 ### 5.3 容器生命周期
 
 ```text
