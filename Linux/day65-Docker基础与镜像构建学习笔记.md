@@ -188,16 +188,18 @@ Docker 最常用的命令可以分为镜像操作和容器操作。
 
 ### 5.1 镜像命令
 
-| 命令 | 作用 | 示例 |
-| --- | --- | --- |
-| `docker pull` | 从远程仓库拉取镜像 | `docker pull nginx:latest` |
-| `docker push` | 将本地镜像推送到远程仓库 | `docker push user/app:1.0` |
-| `docker images` | 查看本地镜像 | `docker images` |
-| `docker rmi` | 删除本地镜像 | `docker rmi nginx:latest` |
-| `docker build` | 根据 Dockerfile 构建镜像 | `docker build -t app:1.0 .` |
-| `docker save` | 将镜像导出为归档文件 | `docker save -o app.tar app:1.0` |
-| `docker load` | 从归档文件导入镜像 | `docker load -i app.tar` |
-
+| 命令              | 作用                 | 示例                               |
+| --------------- | ------------------ | -------------------------------- |
+| `docker pull`   | 从远程仓库拉取镜像          | `docker pull nginx:latest`       |
+| `docker push`   | 将本地镜像推送到远程仓库       | `docker push user/app:1.0`       |
+| `docker images` | 查看本地镜像             | `docker images`                  |
+| `docker rmi`    | 删除本地镜像             | `docker rmi nginx:latest`        |
+| `docker build`  | 根据 Dockerfile 构建镜像 | `docker build -t app:1.0 .`      |
+| `docker save`   | 将镜像导出为归档文件         | `docker save -o app.tar app:1.0` |
+| `docker load`   | 从归档文件导入镜像          | `docker load -i app.tar`         |
+```
+docker load -i
+```
 镜像导入导出流程：
 
 ```text
