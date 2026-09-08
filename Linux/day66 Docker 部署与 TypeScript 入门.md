@@ -6,16 +6,16 @@
 
 ## 📚 目录
 
-- [一、Docker 自定义网络](#一docker-自定义网络)
-- [二、部署后端项目](#二部署后端项目)
-- [三、部署前端项目](#三部署前端项目)
-- [四、Docker Compose](#四docker-compose)
-- [五、TypeScript 简介](#五typescript-简介)
-- [六、TypeScript 的编写、编译与运行](#六typescript-的编写编译与运行)
-- [七、TypeScript 配置文件](#七typescript-配置文件)
-- [八、TypeScript 自动编译](#八typescript-自动编译)
-- [九、TypeScript 类型声明](#九typescript-类型声明)
-- [十、知识点速查](#十知识点速查)
+- [一、Docker 自定义网络](day66%20Docker%20部署与%20TypeScript%20入门.md#一docker-自定义网络)
+- [二、部署后端项目](day66%20Docker%20部署与%20TypeScript%20入门.md#二部署后端项目)
+- [三、部署前端项目](day66%20Docker%20部署与%20TypeScript%20入门.md#三部署前端项目)
+- [四、Docker Compose](day66%20Docker%20部署与%20TypeScript%20入门.md#四docker-compose)
+- [五、TypeScript 简介](day66%20Docker%20部署与%20TypeScript%20入门.md#五typescript-简介)
+- [六、TypeScript 的编写、编译与运行](day66%20Docker%20部署与%20TypeScript%20入门.md#六typescript-的编写编译与运行)
+- [七、TypeScript 配置文件](day66%20Docker%20部署与%20TypeScript%20入门.md#七typescript-配置文件)
+- [八、TypeScript 自动编译](day66%20Docker%20部署与%20TypeScript%20入门.md#八typescript-自动编译)
+- [九、TypeScript 类型声明](day66%20Docker%20部署与%20TypeScript%20入门.md#九typescript-类型声明)
+- [十、知识点速查](day66%20Docker%20部署与%20TypeScript%20入门.md#十知识点速查)
 
 ---
 
