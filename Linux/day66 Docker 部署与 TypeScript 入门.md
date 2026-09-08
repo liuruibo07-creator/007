@@ -41,6 +41,7 @@
 ```
 docker network create sysk
 docker network ls
+docker 
 
 ```
 
