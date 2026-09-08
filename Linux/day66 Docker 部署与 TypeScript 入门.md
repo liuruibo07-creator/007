@@ -152,7 +152,87 @@ Docker Compose 用于 **批量定义、创建和管理多个容器**，适合部
 - 网络配置
 - 环境变量
 - 服务之间的依赖关系
+```
+services:
+  mysql:
+    image: mysql:8
+    
+    container_name: mysql
 
+    ports:
+
+      - "3306:3306"
+
+    environment:
+
+      TZ: Asia/Shanghai
+
+      MYSQL_ROOT_PASSWORD: 123
+
+    volumes:
+
+      - "./mysql/conf:/etc/mysql/conf.d"
+
+      - "./mysql/data:/var/lib/mysql"
+
+      - "./mysql/init:/docker-entrypoint-initdb.d"
+
+    networks:
+
+      - hm
+
+  hmall:
+
+    build:
+
+      context: ./hmall
+
+      dockerfile: Dockerfile
+
+    container_name: hmall
+
+    ports:
+
+      - "8080:8080"
+
+    networks:
+
+      - hm
+
+    depends_on:
+
+      - mysql
+
+  nginx:
+
+    image: nginx
+
+    container_name: nginx
+
+    ports:
+
+      - "18080:18080"
+
+      - "18081:18081"
+
+    volumes:
+
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+
+      - "./nginx/html:/usr/share/nginx/html"
+
+    depends_on:
+
+      - hmall
+
+    networks:
+
+      - hm
+
+networks:
+
+  hm:
+```
 ### 4.3 命令格式
 
 ```bash
