@@ -76,7 +76,7 @@ docker -d --name hmall -p 8080:8080 --network sysk hamll:1.0
 ### 2.2 构建镜像
 
 ```bash
-docker build -t hmall:1.0 /root/hmall
+docker build -t hsmll:1.0 /root/hamll
 ```
 
 参数说明：
@@ -87,11 +87,7 @@ docker build -t hmall:1.0 /root/hmall
 ### 2.3 创建并运行容器
 
 ```bash
-docker run -d \
-  --name hmall \
-  -p 8080:8080 \
-  --network sysk \
-  hmall:1.0
+docker run -d --name hamll -p 8080:8080 --network sysk hamll:1.0
 ```
 
 | 参数 | 说明 |
