@@ -293,7 +293,7 @@ demo.ts
 
 ### 6.2 安装 TypeScript 编译器
 
-全局安装 TypeScript 5：
+全局安装 TypeScript 5：(g为全局安装)
 
 ```bash
 npm install -g typescript@5
