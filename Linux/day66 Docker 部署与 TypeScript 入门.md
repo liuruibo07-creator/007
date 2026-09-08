@@ -29,15 +29,20 @@
 
 ### 1.2 常用命令
 
-| 功能 | 命令 |
-| --- | --- |
-| 创建网络 | `docker network create <网络名称>` |
-| 查看网络列表 | `docker network ls` |
-| 查看网络详情 | `docker network inspect <网络名称>` |
-| 删除指定网络 | `docker network rm <网络名称>` |
-| 删除所有未使用的网络 | `docker network prune` |
-| 将已有容器加入网络 | `docker network connect <网络名称> <容器名称>` |
-| 将容器移出网络 | `docker network disconnect <网络名称> <容器名称>` |
+| 功能         | 命令                                        |
+| ---------- | ----------------------------------------- |
+| 创建网络       | `docker network create <网络名称>`            |
+| 查看网络列表     | `docker network ls`                       |
+| 查看网络详情     | `docker network inspect <网络名称>`           |
+| 删除指定网络     | `docker network rm <网络名称>`                |
+| 删除所有未使用的网络 | `docker network prune`                    |
+| 将已有容器加入网络  | `docker network connect <网络名称> <容器名称>`    |
+| 将容器移出网络    | `docker network disconnect <网络名称> <容器名称>` |
+```
+docker network create sysk
+docker network ls
+
+```
 
 ### 1.3 创建容器时加入网络
 
