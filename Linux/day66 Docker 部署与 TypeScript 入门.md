@@ -41,7 +41,10 @@
 ```
 docker network create sysk
 docker network ls
-docker 
+docker network inspect sysk
+docker network rm sysk
+docker network prune
+
 
 ```
 
