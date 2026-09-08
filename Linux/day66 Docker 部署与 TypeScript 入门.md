@@ -121,6 +121,7 @@ docker run -d \
   -v /root/nginx/nginx.conf:/etc/nginx/nginx.conf \
   --network sysk \
   nginx
+docker run -d --name nginx 
 ```
 
 重点说明：
