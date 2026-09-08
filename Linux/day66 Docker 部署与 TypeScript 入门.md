@@ -109,7 +109,7 @@ docker run -d --name hamll -p 8080:8080 --network sysk hamll:1.0
 - Nginx 相关目录和文件
 - `nginx.conf` 配置文件
 - 两个已经完成打包的前端项目
-
+![628](assets/day66%20Docker%20部署与%20TypeScript%20入门/file-20260908195429373.png)
 ### 3.2 创建并运行 Nginx 容器
 
 ```bash
