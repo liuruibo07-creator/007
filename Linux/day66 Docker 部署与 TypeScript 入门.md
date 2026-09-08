@@ -59,7 +59,7 @@ docker run --network <网络名称> <镜像名称>
 示例：
 
 ```bash
-docker run -d --name app --network sysk app:1.0
+docker -d --name hmall -p 8080:8080 --network sysk hamll:1.0
 ```
 
 ---
