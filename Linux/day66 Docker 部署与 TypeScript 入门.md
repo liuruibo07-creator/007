@@ -44,7 +44,7 @@ docker network ls
 docker network inspect sysk
 docker network rm sysk
 docker network prune
-
+docker network connect sysyk 
 
 ```
 
