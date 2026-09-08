@@ -121,7 +121,7 @@ docker run -d \
   -v /root/nginx/nginx.conf:/etc/nginx/nginx.conf \
   --network sysk \
   nginx
-docker run -d --name nginx 
+docker run -d --name nginx -p 10080:10080 -p 10081:10081 -v /root/nginx/html:/usr/share/nginx/html -v /root/nginx/nginx.conf:/etc/nginx/nginx.conf --network sysk
 ```
 
 重点说明：
