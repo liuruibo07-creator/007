@@ -63,7 +63,7 @@
 
 ### 2.1 Spring Cloud Alibaba
 
-Spring Cloud Alibaba 是一套微服务解决方案，其中包含多种组件，每类组件用于处理微服务架构中的一类问题。
+Spring Cloud Alibaba 是一套微服务解决方案，集成了各种微服务功能组件，每类组件用于处理微服务架构中的一类问题，已基于springboot完成装配。
 
 本节涉及的核心能力：
 
