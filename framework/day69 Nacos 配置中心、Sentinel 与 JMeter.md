@@ -251,7 +251,49 @@ Java 解析 JSON 为 RouteDefinition
         ↓
 发布路由刷新事件
 ```
-
+```java
+@Component  
+@Slf4j  
+public class RouteConfigListener {  
+    @Autowired  
+    private NacosConfigManager nacosConfigManager;  
+    @Autowired  
+    private RouteDefinitionWriter routeDefinitionWriter;  
+    private List<String> routeIds = new ArrayList<>();  
+    @PostConstruct  
+    public void RouteConfigListener() throws NacosException {  
+        ConfigService configService = nacosConfigManager.getConfigService();  
+        String configInfoJson = configService.getConfig("gateway-routes.json", "DEFAULT_GROUP", 5000);  
+        addRouteInfo(configInfoJson);  
+        //添加监听器,Nacos中路由配置变更时自动刷新  
+        configService.addListener("gateway-routes.json", "DEFAULT_GROUP", new Listener() {  
+            @Override  
+            public Executor getExecutor() {  
+                return null;  
+            }  
+            @Override  
+            public void receiveConfigInfo(String configInfo) {  
+                log.info("监听到Nacos路由配置变更,开始刷新网关路由");  
+                //先删除旧的路由,再重新加载新的路由  
+                for (String routeId : routeIds) {  
+                    routeDefinitionWriter.delete(Mono.just(routeId)).subscribe();  
+                }  
+                addRouteInfo(configInfo);  
+            }  
+        });  
+    }  
+    private void addRouteInfo(String configInfoJson) {  
+        List<RouteDefinition> routeDefinitions = JsonUtils.jsonToList(configInfoJson, RouteDefinition.class);  
+        //清空旧的路由id记录,重新记录本次加载的路由id  
+        routeIds.clear();  
+        for (RouteDefinition routeDefinition : routeDefinitions) {  
+            routeDefinitionWriter.save(Mono.just(routeDefinition)).subscribe();  
+            routeIds.add(routeDefinition.getId());  
+        }  
+        log.info("网关路由加载完成,共{}条", routeIds.size());  
+    }  
+}
+```
 ---
 
 ## 四、服务雪崩与保护方案
