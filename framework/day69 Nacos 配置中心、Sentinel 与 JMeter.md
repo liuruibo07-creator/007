@@ -6,13 +6,13 @@
 
 ## 📚 目录
 
-- [一、Nacos 共享配置](#一nacos-共享配置)
-- [二、业务配置热更新](#二业务配置热更新)
-- [三、Gateway 动态路由](#三gateway-动态路由)
-- [四、服务雪崩与保护方案](#四服务雪崩与保护方案)
-- [五、Sentinel](#五sentinel)
-- [六、JMeter 性能测试](#六jmeter-性能测试)
-- [七、知识点速查](#七知识点速查)
+- [一、Nacos 共享配置](day69%20Nacos%20配置中心、Sentinel%20与%20JMeter.md#一nacos-共享配置)
+- [二、业务配置热更新](day69%20Nacos%20配置中心、Sentinel%20与%20JMeter.md#二业务配置热更新)
+- [三、Gateway 动态路由](day69%20Nacos%20配置中心、Sentinel%20与%20JMeter.md#三gateway-动态路由)
+- [四、服务雪崩与保护方案](day69%20Nacos%20配置中心、Sentinel%20与%20JMeter.md#四服务雪崩与保护方案)
+- [五、Sentinel](day69%20Nacos%20配置中心、Sentinel%20与%20JMeter.md#五sentinel)
+- [六、JMeter 性能测试](day69%20Nacos%20配置中心、Sentinel%20与%20JMeter.md#六jmeter-性能测试)
+- [七、知识点速查](day69%20Nacos%20配置中心、Sentinel%20与%20JMeter.md#七知识点速查)
 
 ---
 
