@@ -199,15 +199,16 @@ public class OrderProperties {
 ### 3.3 网关 bootstrap.yml
 
 ```yaml
-spring:
-  application:
-    name: cloud-gateway
-  cloud:
-    nacos:
-      server-addr: 192.168.150.102:8848
-      config:
-        file-extension: yml
-        shared-configs:
+#bootstrap.yml文件优先于application.yml文件加载,主要配置nacos配置中心相关的信息  
+spring:  
+  application:  
+    name: cloud-gateway  
+  cloud:  
+    nacos:  
+      server-addr: 192.168.150.102:8848  
+      config:  
+        file-extension: yml  
+        shared-configs:  
           - data-id: shared-log.yml
 ```
 
