@@ -137,19 +137,13 @@ public class OrderController {
 #### 方式二：`@ConfigurationProperties`
 
 ```java
-@Component
-@ConfigurationProperties(prefix = "order")
-public class OrderProperties {
-    private Integer timeout;
-
-    public Integer getTimeout() {
-        return timeout;
-    }
-
-    public void setTimeout(Integer timeout) {
-        this.timeout = timeout;
-    }
+@Data  
+@Component  
+@ConfigurationProperties(prefix = "order")  
+public class OrderProperties {  
+    private Integer count;  
 }
+
 ```
 
 | 方式 | 适合场景 |
