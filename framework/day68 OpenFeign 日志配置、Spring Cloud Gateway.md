@@ -1,6 +1,6 @@
- # Day 68 学习笔记：OpenFeign 日志与微服务网关
+# Day 68 学习笔记：OpenFeign 日志与微服务网关
 
-> 本篇整理自 `day68.xmind`，主要涵盖 **OpenFeign 日志配置、Spring Cloud Gateway、路由断言、过滤器、用户登录、JWT 令牌与全局过滤器**。
+> 本篇整合自 `day68.xmind` 与扩展版 `day68(1).xmind`，主要涵盖 **OpenFeign 日志配置、Spring Cloud Gateway、路由断言、过滤器、用户登录、JWT 身份校验及用户信息跨服务传递**。
 
 ---
 
@@ -15,7 +15,8 @@
 - [七、用户登录接口](day68%20OpenFeign%20日志配置、Spring%20Cloud%20Gateway.md#七用户登录接口)
 - [八、JWT 登录令牌](day68%20OpenFeign%20日志配置、Spring%20Cloud%20Gateway.md#八jwt-登录令牌)
 - [九、身份校验与全局过滤器](day68%20OpenFeign%20日志配置、Spring%20Cloud%20Gateway.md#九身份校验与全局过滤器)
-- [十、知识点速查](day68%20OpenFeign%20日志配置、Spring%20Cloud%20Gateway.md#十知识点速查)
+- [十、用户信息跨服务传递](day68%20OpenFeign%20日志配置、Spring%20Cloud%20Gateway.md#十用户信息跨服务传递)
+- [十一、知识点速查](day68%20OpenFeign%20日志配置、Spring%20Cloud%20Gateway.md#十一知识点速查)
 
 ---
 
@@ -156,6 +157,11 @@ spring:
           predicates:
             - Path=/order/**
             - Header=aaa,bbb
+          filters:
+            - AddRequestHeader=ccc,ddd
+
+      default-filters:
+        - AddRequestHeader=ccc,ddd
 ```
 
 ### 4.2 配置说明
@@ -167,6 +173,8 @@ spring:
 | `lb://` | 使用负载均衡方式选择服务实例 |
 | `user-service` | 在注册中心登记的目标服务名称 |
 | `predicates` | 当前路由需要满足的断言条件 |
+| `filters` | 只对当前路由生效的过滤器 |
+| `default-filters` | 对所有路由生效的默认过滤器 |
 
 当请求路径匹配 `/user/**` 时，网关会从注册中心获取 `user-service` 的实例，再通过负载均衡选择一个实例并转发请求。
 
@@ -237,6 +245,20 @@ predicates:
 ```
 
 课程导图记录了 33 个路由过滤器以及 1 个默认过滤器。实际可用的过滤器工厂数量同样可能随框架版本变化。
+
+### 6.2 局部过滤器与默认过滤器
+
+```yaml
+# 仅对当前路由生效
+filters:
+  - AddRequestHeader=ccc,ddd
+
+# 对所有路由生效
+default-filters:
+  - AddRequestHeader=ccc,ddd
+```
+
+`AddRequestHeader=ccc,ddd` 表示向请求中添加名为 `ccc`、值为 `ddd` 的请求头。
 
 ---
 
@@ -410,18 +432,115 @@ public int getOrder() {
 ```text
 请求到达网关
     ↓
-判断是否为无需登录的放行路径
-    ↓ 否
+① 获取请求路径
+    ↓
+② 判断是否为白名单路径
+    ├── 是 → 直接放行
+    └── 否
+          ↓
 从请求头中获取 JWT
     ↓
-校验令牌是否存在、有效、未过期
+④ 校验令牌是否存在、有效、未过期
     ├── 校验失败 → 返回未授权响应
-    └── 校验成功 → 放行到目标微服务
+    └── 校验成功
+          ↓
+⑤ 从 JWT 获取 userId，添加到转发请求头
+          ↓
+放行到目标微服务
+```
+
+### 9.4 配置与匹配白名单
+
+在 YAML 中定义无需登录的路径：
+
+```yaml
+cloud:
+  whitePaths:
+    - /user/login
+    - /user1/**
+```
+
+使用配置属性类加载白名单，再通过 `AntPathMatcher` 判断当前请求路径是否匹配：
+
+```java
+AntPathMatcher matcher = new AntPathMatcher();
+boolean matched = matcher.match(whitePath, requestPath);
+```
+
+### 9.5 将 userId 加入转发请求
+
+Token 校验成功后，从中解析 `userId`，构造新请求并添加请求头：
+
+```java
+ServerHttpRequest request = exchange.getRequest()
+        .mutate()
+        .header("userId", userId.toString())
+        .build();
+
+ServerWebExchange newExchange = exchange.mutate()
+        .request(request)
+        .build();
+
+return chain.filter(newExchange);
 ```
 
 ---
 
-## 十、知识点速查
+## 十、用户信息跨服务传递
+
+网关完成身份校验后，还需要让业务代码以及被 OpenFeign 调用的下游服务获得当前用户 ID。
+
+### 10.1 Spring MVC 拦截器与 ThreadLocal
+
+业务微服务定义 Spring MVC 拦截器，从请求头读取 `userId`，再保存到 `ThreadLocal`：
+
+```text
+Gateway 添加 userId 请求头
+        ↓
+Spring MVC 拦截器读取 userId
+        ↓
+保存到 ThreadLocal
+        ↓
+Controller / Service 获取当前用户
+```
+
+> ⚠️ 请求处理结束后必须清理 `ThreadLocal`，避免线程池复用导致用户信息串线。
+
+### 10.2 OpenFeign 请求拦截器
+
+当前微服务继续调用其他服务时，通过 OpenFeign 的 `RequestInterceptor` 将用户 ID 写入远程请求头：
+
+```java
+public class UserInfoRequestInterceptor implements RequestInterceptor {
+
+    @Override
+    public void apply(RequestTemplate template) {
+        Long userId = UserContext.getUser();
+        if (userId != null) {
+            template.header("userId", userId.toString());
+        }
+    }
+}
+```
+
+实现步骤：
+
+1. 定义类并实现 `RequestInterceptor`。
+2. 从当前用户上下文获取 `userId`。
+3. 使用 `RequestTemplate.header()` 添加请求头。
+4. 在配置类中注册该请求拦截器。
+
+完整链路：
+
+```text
+JWT → Gateway 解析 userId → 请求头
+    → MVC 拦截器 → ThreadLocal
+    → Feign 请求拦截器 → 下游服务请求头
+```
+
+---
+
+## 十一、知识点速查
 
 | 知识点 | 核心内容 |
 | --- | --- |
@@ -437,7 +556,10 @@ public int getOrder() {
 | `GlobalFilter` | 对所有匹配请求执行全局过滤逻辑 |
 | `Ordered` | 控制过滤器执行顺序，数值越小越靠前 |
 | `chain.filter(exchange)` | 将请求放行到后续过滤器或目标服务 |
+| `AntPathMatcher` | 匹配白名单路径规则 |
+| `ThreadLocal` | 保存单次请求的当前用户信息 |
+| `RequestInterceptor` | 为 OpenFeign 请求传递用户信息 |
 
 ---
 
-> ✅ **本节重点：** 能够开启 OpenFeign 完整日志；理解 Gateway 的统一入口、路由转发和身份校验职责；掌握 `id`、`uri`、`predicates` 等路由配置；理解登录接口生成 JWT 的过程，并能通过全局过滤器统一处理请求的前置与后置逻辑。
+> ✅ **本节重点：** 能够开启 OpenFeign 完整日志；掌握 Gateway 路由、断言与过滤器配置；理解登录后生成 JWT、网关校验 Token、解析 `userId` 的完整流程；能利用 MVC 拦截器、`ThreadLocal` 和 Feign 请求拦截器实现用户信息的跨服务传递。
