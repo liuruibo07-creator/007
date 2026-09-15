@@ -85,7 +85,7 @@ ${spring.application.name}-${spring.profiles.active}.${file-extension}
 ```text
 order-service-dev.yml
 ```
-
+![](assets/day69%20Nacos%20配置中心、Sentinel%20与%20JMeter/file-20260915094114863.png)
 ### 1.5 精简 application.yml
 
 公共配置移到 Nacos 后，本地只保留端口和微服务特有配置：
