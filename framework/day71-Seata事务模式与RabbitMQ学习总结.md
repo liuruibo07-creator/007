@@ -100,6 +100,9 @@ public String createUser(User user) {
     log.error("调用user-service失败,触发降级, user={}", user, throwable);  
     throw new RuntimeException("调用user-service失败,触发降级");  
 }
+
+@PostMapping("/user")  
+String createUser(@RequestBody User user);
 ```
 ---
 
