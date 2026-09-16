@@ -37,6 +37,7 @@ XA 采用两阶段提交：
 2. 如果所有分支都成功，TC 通知各 RM 提交事务。
 3. 如果任一分支失败，TC 通知各 RM 回滚事务。
 4. RM 接收 TC 指令，完成本地事务的提交或回滚。
+![](assets/day71-Seata事务模式与RabbitMQ学习总结/file-20260916205625449.png)
 
 ```mermaid
 sequenceDiagram
