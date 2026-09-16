@@ -135,7 +135,7 @@ flowchart LR
     E -->|全局提交| F[删除 undo_log]
     E -->|全局回滚| G[根据 undo_log 恢复数据]
 ```
-
+![](assets/day71-Seata事务模式与RabbitMQ学习总结/file-20260916211116024.png)
 ### 2.3 优缺点
 
 | 优点 | 缺点 |
@@ -161,7 +161,7 @@ public void createOrder(Order order) {
     // 创建订单及其他跨服务业务
 }
 ```
-
+![](assets/day71-Seata事务模式与RabbitMQ学习总结/file-20260916211035692.png)
 ### 2.5 XA 与 AT 对比
 
 | 对比项 | XA | AT |
