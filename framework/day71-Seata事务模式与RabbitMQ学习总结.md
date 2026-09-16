@@ -79,12 +79,22 @@ seata:
 在全局事务的业务入口方法上添加注解：
 
 ```java
-@GlobalTransactional(rollbackFor = Exception.class)
-public void createOrder(Order order) {
-    // 创建订单及其他跨服务业务
+@Override  
+@GlobalTransactional  
+public void createOrder(Order order) {  
+    orderMapper.insert(order);  
+    User user=User.builder().username("zs").password("123").address("天津").build();  
+    userClient.createUser(user);  
 }
 ```
-
+```java
+@Override  
+@Transactional  
+public void createUser(User user) {  
+    int i=10/0;  
+    userMapper.insert(user);  
+}
+```
 ---
 
 ## 2. Seata AT 模式
