@@ -113,15 +113,15 @@ public void listen(String message) {
 发送时为单条消息设置延迟，单位为毫秒：
 
 ```java
-rabbitTemplate.convertAndSend(
-        "delay.direct",
-        "delay",
-        "hello delay message",
-        message -> {
-            message.getMessageProperties().setDelay(30_000);
-            return message;
-        }
-);
+@Test  
+public void testDelayMsg(){  
+    rabbitTemplate.convertAndSend("delay.direct","delay","delay.message",new MessagePostProcessor() {  
+        @Override  
+        public Message postProcessMessage(Message message) throws AmqpException {  
+            message.getMessageProperties().setHeader("x-delay",10000);  
+            return message;  
+        }  
+    });
 ```
 
 上例表示延迟约 **30 秒** 后再向绑定队列投递。
