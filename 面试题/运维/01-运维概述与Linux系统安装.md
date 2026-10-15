@@ -83,13 +83,13 @@ hostnamectl set-hostname node01.example.internal
 
 ## 五、关机与重启
 
-| 命令 | 作用 |
-| --- | --- |
-| `reboot` | 发起重启 |
-| `shutdown -r +5` | 5 分钟后重启 |
-| `shutdown -h +5` | 5 分钟后关机 |
-| `shutdown -h now` | 立即关机 |
-| `shutdown -c` | 取消计划中的关机或重启 |
+| 命令                | 作用          |
+| ----------------- | ----------- |
+| `reboot`          | 发起重启        |
+| `shutdown -r +5`  | 5 分钟后重启     |
+| `shutdown -h +5`  | 5 分钟后关机     |
+| `shutdown -h now` | 立即关机        |
+| `shutdown -c`     | 取消计划中的关机或重启 |
 
 未指定时间的 `shutdown` 通常默认为一分钟后执行。计划操作前应考虑业务影响。
 
