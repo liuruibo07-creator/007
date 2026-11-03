@@ -596,7 +596,7 @@ YAML 规则：
 
 ```java
 @Value("${app.name}")
-private String appName;
+private String appName; 
 ```
 
 适合读取少量、分散配置。
