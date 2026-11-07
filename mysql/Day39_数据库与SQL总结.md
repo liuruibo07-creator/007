@@ -211,20 +211,20 @@ WHERE 条件;
 
 ## 五、核心知识速查
 
-| 目标 | 关键语法 |
-| --- | --- |
-| 创建数据库 | `CREATE DATABASE` |
-| 查看数据库 | `SHOW DATABASES` |
-| 使用数据库 | `USE` |
-| 删除数据库 | `DROP DATABASE` |
-| 创建表 | `CREATE TABLE` |
-| 查看表 | `SHOW TABLES` |
-| 查看表结构 | `DESC` |
-| 修改表结构 | `ALTER TABLE` |
-| 删除表 | `DROP TABLE` |
-| 新增数据 | `INSERT INTO` |
-| 修改数据 | `UPDATE ... SET ... WHERE ...` |
-| 删除数据 | `DELETE FROM ... WHERE ...` |
+| 目标    | 关键语法                           |
+| ----- | ------------------------------ |
+| 创建数据库 | `CREATE DATABASE`              |
+| 查看数据库 | `SHOW DATABASES`               |
+| 使用数据库 | `USE`                          |
+| 删除数据库 | `DROP DATABASE`                |
+| 创建表   | `CREATE TABLE`                 |
+| 查看表   | `SHOW TABLES`                  |
+| 查看表结构 | `DESC`                         |
+| 修改表结构 | `ALTER TABLE`                  |
+| 删除表   | `DROP TABLE`                   |
+| 新增数据  | `INSERT INTO`                  |
+| 修改数据  | `UPDATE ... SET ... WHERE ...` |
+| 删除数据  | `DELETE FROM ... WHERE ...`    |
 
 ---
 
